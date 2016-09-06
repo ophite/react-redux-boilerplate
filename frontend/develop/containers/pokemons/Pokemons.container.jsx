@@ -1,61 +1,55 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { getPokemons, clearDataState } from '../../actions/pokeball.actions';
-import apiActions from '../../actions/api.actions';
-import pTypes from '../../actions/types/pokeball.types';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import PokemonsPage from '../../components/pages/pokemons/Pokemons.page.jsx';
 
+import {actionGetPokemons, actionClearPokemons} from '../../actions/pokeball.actions';
+import typesPokemon from '../../actions/types/pokeball.types';
+
+
 class PokemonsContainer extends Component {
 
-    componentDidMount() {
-        this.props.handleGetPokemons({ limit: 12 });
-    }
+	componentDidMount() {
+		const { handleActionGetPokemons } = this.props;
+		handleActionGetPokemons({ limit: 12 });
+	}
 
-    componentWillUnmount() {
-        this.props.handleClearApiState(pTypes.GET_POKEMONS);
+	componentWillUnmount() {
+		const { handleActionClearPokemons } = this.props;
+		handleActionClearPokemons();
+	}
 
-        this.props.handleClearDataState();
-    }
+	handleGetPokemonsNext() {
+		const { handleActionGetPokemons } = this.props;
+		handleActionGetPokemons({ ...paginator });
+	}
 
-    handleGetPokemonsNext() {
-        const { apiMeta: { paginator }, handleGetPokemons } = this.props;
+	render() {
+		const { pokemons } = this.props;
 
-        handleGetPokemons({ ...paginator });
-    }
-
-    render() {
-        const { apiMeta, pokemons } = this.props;
-
-        return (
-            <PokemonsPage
-              apiMeta={apiMeta}
-              pokemons={pokemons}
-              handleGetPokemons={this.handleGetPokemonsNext.bind(this)}
-            />
-        );
-    }
+		return (
+			<PokemonsPage
+				pokemons={pokemons}
+				handleGetPokemons={this.handleGetPokemonsNext.bind(this)}
+			/>
+		);
+	}
 }
 
 PokemonsContainer.propTypes = {
-    pokemons: PropTypes.object,
-    apiMeta: PropTypes.object,
-    handleGetPokemons: PropTypes.func,
-    handleClearApiState: PropTypes.func,
-    handleClearDataState: PropTypes.func,
+	pokemons: PropTypes.object,
+	handleGetPokemons: PropTypes.func,
+	handleClearDataState: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-    // todo: set init value for apiMeta
-    apiMeta: state.api[pTypes.GET_POKEMONS] || {},
-    pokemons: state.pokeball.pokemons,
+	pokemons: state.pokeball.pokemons
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    handleGetPokemons: bindActionCreators(getPokemons, dispatch),
-    handleClearApiState: bindActionCreators(apiActions.clearState, dispatch),
-    handleClearDataState: bindActionCreators(clearDataState, dispatch),
+	handleActionGetPokemons: bindActionCreators(actionGetPokemons, dispatch),
+	handleActionClearPokemons: bindActionCreators(actionClearPokemons, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonsContainer);

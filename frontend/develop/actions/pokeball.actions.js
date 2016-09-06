@@ -1,49 +1,39 @@
 import api from '../api';
-import apiActions from './api.actions';
-import pTypes from './types/pokeball.types';
+import * as actionsCommon from './common.actions';
+import typesPokemons from './types/pokeball.types';
+import mapperPokemon from '../utils/mappers/pokemons.mapper';
 
-export const getPokemons = (params) => (dispatch) => {
-    dispatch(apiActions.request(pTypes.GET_POKEMONS));
 
-    return api.pokeball.getPokemons(params).then(
-        (data) => {
-            dispatch(apiActions.paginator(pTypes.GET_POKEMONS, data.meta));
+export const actionGetPokemons = (params) => (dispatch) => {
+	dispatch(actionsCommon.request(typesPokemons.REQUEST_GET_POKEMONS));
 
-            // todo: Implement common mechanism for handle API response
-            // Map API response
-            // const mResponse = []; // normalizr.res.getAll(data.objects);
+	return api.pokeball
+		.getPokemons(params)
+		.then(({ meta, objects }) => {
+			dispatch(actionsCommon.success(typesPokemons.CLEAR_POKEMONS));
 
-            // Normalize API response
-            const nResponse = []; // normalize(mResponse, sc.pokeball.getPokemons());
+			const items = mapperPokemon.res.getAll(objects);
+			const paginator = mapperPokemon.res.getPaginator(meta);
 
-            dispatch(apiActions.success(pTypes.GET_POKEMONS, nResponse));
-        },
-        (error) => {
-            dispatch(apiActions.failure(pTypes.GET_POKEMONS, error));
-        }
-    );
+			dispatch(actionsCommon.success(typesPokemons.GET_POKEMONS,
+				{ items, paginator }
+			));
+		})
+		.catch(actionsCommon.fail(dispatch));
 };
 
-export const getPokemon = (params) => (dispatch) => {
-    dispatch(apiActions.request(pTypes.GET_POKEMON));
+export const actionGetPokemon = (params) => (dispatch) => {
+	dispatch(actionsCommon.request(typesPokemons.REQUEST_GET_POKEMON));
 
-    return api.pokeball.getPokemon(params).then(
-        (/* data*/) => {
-            // todo: Implement common mechanism for handle API response
-            // Map API response
-            // const mResponse = []; // normalizr.res.getOne(data);
-
-            // Normalize API response
-            const nResponse = [];// normalize(mResponse, sc.pokeball.getPokemon());
-
-            dispatch(apiActions.success(pTypes.GET_POKEMON, nResponse));
-        },
-        (error) => {
-            dispatch(apiActions.failure(pTypes.GET_POKEMON, error));
-        }
-    );
+	return api.pokeball
+		.getPokemon(params)
+		.then((data) => {
+			const pokemon = mapperPokemon.res.getOne(data);
+			dispatch(actionsCommon.success(typesPokemons.GET_POKEMON, { pokemon }));
+		})
+		.catch(actionsCommon.fail(dispatch));
 };
 
-export const clearDataState = () => ({
-    type: pTypes.CLEAR_DATA_STATE,
+export const actionClearPokemons = () => ({
+	type: typesPokemons.CLEAR_POKEMONS
 });

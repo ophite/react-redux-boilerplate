@@ -20,7 +20,7 @@ export default (state = DEFAULT_STATE, action) => {
 };
 
 
-function reduceModalOpen(_, action) {
+function reduceModalOpen(state, action) {
     return {
         isModalActive: true,
         key: action.key,

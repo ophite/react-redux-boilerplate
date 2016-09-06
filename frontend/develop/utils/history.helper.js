@@ -1,32 +1,49 @@
 import appHistory from '../config/appHistory';
-import { mandatory } from './valadation.helper';
-import { isEmpty } from './helper';
+import {mandatory} from './valadation.helper';
+import {isEmpty} from './helper';
 
 export const handlePush = ({ pathname, query, state }) => {
-    const historyObject = {};
+	const historyObject = {};
 
-    if (pathname) { historyObject.pathname = pathname; }
-    if (query) { historyObject.query = query; }
-    if (state) { historyObject.state = state; }
+	if (pathname) {
+		historyObject.pathname = pathname;
+	}
+	if (query) {
+		historyObject.query = query;
+	}
+	if (state) {
+		historyObject.state = state;
+	}
 
-    if (isEmpty(historyObject)) { mandatory('handlePush'); }
+	if (isEmpty(historyObject)) {
+		mandatory('handlePush');
+	}
 
-    appHistory.push(historyObject);
+	appHistory.push(historyObject);
 };
 
 export const handleReplace = ({ pathname, query, state }) => {
-    const historyObject = {};
+	const historyObject = {};
 
-    if (pathname) { historyObject.pathname = pathname; }
-    if (query) { historyObject.query = query; }
-    if (state) { historyObject.state = state; }
+	if (pathname) {
+		historyObject.pathname = pathname;
+	}
+	if (query) {
+		historyObject.query = query;
+	}
+	if (state) {
+		historyObject.state = state;
+	}
 
-    if (isEmpty(historyObject)) { mandatory('handleReplace'); }
+	if (isEmpty(historyObject)) {
+		mandatory('handleReplace');
+	}
 
-    appHistory.replace(historyObject);
+	appHistory.replace(historyObject);
 };
 
 export const handleBack = () => {
-    appHistory.goBack();
+	appHistory.goBack();
 };
 
+// TODO

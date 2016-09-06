@@ -1,46 +1,40 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { getPokemon } from '../../actions/pokeball.actions';
-import pTypes from '../../actions/types/pokeball.types';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import PokemonPage from '../../components/pages/pokemons/Pokemon.page.jsx';
+import {actionGetPokemon} from '../../actions/pokeball.actions';
 
 class PokemonContainer extends Component {
 
-    componentDidMount() {
-        const { params, handleGetPokemon } = this.props;
+	componentDidMount() {
+		const { params, handleActionGetPokemon } = this.props;
+		handleActionGetPokemon({ pokemonId: params.pokemonId });
+	}
 
-        handleGetPokemon({ pokemonId: params.pokemonId });
-    }
+	render() {
+		const { pokemon } = this.props;
 
-    render() {
-        const { apiMeta, pokemon } = this.props;
-
-        return (
-            <PokemonPage
-              apiMeta={apiMeta}
-              pokemon={pokemon}
-            />
-        );
-    }
+		return (
+			<PokemonPage
+				pokemon={pokemon}
+			/>
+		);
+	}
 }
 
 PokemonContainer.propTypes = {
-    params: PropTypes.object,
-    pokemon: PropTypes.object,
-    apiMeta: PropTypes.object,
-    handleGetPokemon: PropTypes.func,
+	params: PropTypes.object,
+	pokemon: PropTypes.object,
+	handleGetPokemon: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-    // // todo: set initializing for apiMeta
-    apiMeta: state.api[pTypes.GET_POKEMON] || {},
-    pokemon: state.pokeball.pokemon,
+	pokemon: state.pokeball.pokemon
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    handleGetPokemon: bindActionCreators(getPokemon, dispatch),
+	handleActionGetPokemon: bindActionCreators(actionGetPokemon, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonContainer);

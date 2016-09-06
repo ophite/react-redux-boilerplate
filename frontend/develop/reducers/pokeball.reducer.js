@@ -1,81 +1,74 @@
 import types from '../actions/types/pokeball.types';
+import {XHR_STATE, reduceRequest} from './common.reducer';
+
 
 const DEFAULT_STATE = {
-    pokemon: {
-        isEmpty: false,
-        entities: {},
-        types: {},
-    },
-    pokemons: {
-        isEmpty: false,
-        result: [],
-        entities: {},
-        types: {},
-    },
+	pokemon: {
+		isLoading: false,
+		types: {}
+	},
+	pokemons: {
+		isLoading: false,
+		paginator: {},
+		hasMore: false,
+		isEmpty: false,
+		items: [],
+		types: {}
+	}
 };
+
 
 export default (state = DEFAULT_STATE, action) => {
-    switch (action.type) {
-        case types.GET_POKEMON: return getPokemon(state, action);
+	switch (action.type) {
 
-        case types.GET_POKEMONS: return getPokemons(state, action);
+		case types.GET_POKEMON:
+			return reduceGetPokemon(state, action);
 
-        case types.CLEAR_DATA_STATE: return clearDataState(state, action);
+		case types.GET_POKEMONS:
+			return reduceGetPokemons(state, action);
+		case types.CLEAR_POKEMONS:
+			return reduceClearPokemons(state, action);
 
-        default:
-            return state;
-    }
+		case types.REQUEST_GET_POKEMON:
+		case types.REQUEST_GET_POKEMONS:
+			return reduceRequest(state, action);
+
+		default:
+			return state;
+	}
 };
 
-function getPokemon(state, action) {
-    // action.payload = {
-    //     entities: {
-    //         pokemons: {...},
-    //         types: {...}
-    //     },
-    //     result: [...]
-    // }
-
-    return {
-        ...state,
-        pokemon: {
-            ...state.pokemon,
-            result: action.payload.result,
-            entities: {
-                ...action.payload.entities.pokemons,
-            },
-        },
-    };
+function reduceGetPokemon(state, action) {
+	debugger
+	const { pokemon } = action.payload;
+	return {
+		...state,
+		pokemon
+	};
 }
 
-function getPokemons(state, action) {
-    // action.payload = {
-    //     entities: {
-    //         pokemons: {...},
-    //         types: {...}
-    //     },
-    //     result: [...]
-    // }
+function reduceGetPokemons(state, action) {
+	debugger
+	const { paginator, items } = action.payload;
+	const { pokemons } = state;
 
-    return {
-        ...state,
-        pokemons: {
-            ...state.pokemons,
-            result: [...state.pokemons.result, ...action.payload.result],
-            entities: {
-                ...state.pokemons.entities,
-                ...action.payload.entities.pokemons,
-            },
-            types: {
-                ...state.pokemons.types,
-                ...action.payload.entities.types,
-            },
-        },
-    };
+	return {
+		...state,
+		pokemons: {
+			isLoading: false,
+			paginator,
+			hasMore: true, // TODO hasMore must be in paginator maybe or calc by paginator
+			items: [
+				...pokemons.items,
+				...items
+			]
+		}
+	};
 }
 
-function clearDataState() {
-    return {
-        ...DEFAULT_STATE,
-    };
+function reduceClearPokemons(state) {
+	return {
+		...state,
+		pokemons: { ...DEFAULT_STATE.pokemons }
+	};
 }

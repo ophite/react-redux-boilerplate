@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react';
 
 import ModalContainer from '../../../containers/modal/Modal.container.jsx';
 
-import '../../../assets/boot_scss/bootstrap.scss';
-
 export default class LayoutPage extends Component {
     renderContainerModal() {
         const { windowWidth, isModalOpen, containerModalData, handleKeyDown } = this.props;
@@ -27,7 +25,7 @@ export default class LayoutPage extends Component {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-12">
-                        <h2 style={headerStyle}> {'<Pokémon GO|Noxwille />'} </h2>
+                        <h2 style={headerStyle}> Pokemon test </h2>
                     </div>
                 </div>
                 <hr />

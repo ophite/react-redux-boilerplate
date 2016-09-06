@@ -1,30 +1,80 @@
-import cTypes from './types/common.types';
+'use strict';
 
-// * Actions structure *
-//
-// - have a { type } property.
-// - have a { error } property.
-// - have a { payload } property.
-// - have a { meta } property.
+import typesCommon from './types/common.types';
+import modalContainerTypes from '../constants/containersTypes.constant.js';
+import appHistory   from '../config/appHistory';
+import routes from '../constants/routes.constant';
 
-export default {
-    // todo: think about merging CLEAR_DATA_STATE + CLEAR_API_STATE
+
+export const fail = (dispatch) => {
+	return (error) => {
+		if (error && error.status === 401) {
+			// dispatch(brokenToken(true));
+			// appHistory.push(routes.trends());
+			dispatch(openContainerModal({
+				type: modalContainerTypes.AUTH
+			}));
+		} else if (error && error.status === 404) {
+			appHistory.replace(routes.notFound());
+		} else {
+			dispatch(success(typesCommon.COMMON_ERROR, { error }));
+		}
+	};
 };
 
-export const openModal = (payload) => ({
-    type: cTypes.OPEN_MODAL,
-    payload,
-});
+export const request = (pendingType, requestParams) => {
+	return {
+		type: pendingType ? pendingType : typesCommon.COMMON_REQUEST,
+		payload: {
+			pendingType,
+			...requestParams
+		}
+	};
+};
 
-export const closeModal = () => ({
-    type: cTypes.CLOSE_MODAL,
-});
+export const success = (type, data = null) => {
+	return {
+		type,
+		payload: data ? { ...data } : data
+	};
+};
 
-export const openContainerModal = (payload) => ({
-    type: cTypes.OPEN_CONTAINER_MODAL,
-    payload,
-});
+export const openModal = (modalData) => {
+	return {
+		type: typesCommon.OPEN_MODAL,
+		payload: { modalData }
+	};
+};
 
-export const closeContainerModal = () => ({
-    type: cTypes.CLOSE_CONTAINER_MODAL,
-});
+export const closeModal = (modalData) => {
+	return {
+		type: typesCommon.CLOSE_MODAL
+	};
+};
+
+export const openContainerModal = (containerModalData) => {
+	return {
+		type: typesCommon.OPEN_CONTAINER_MODAL,
+		payload: { containerModalData }
+	};
+};
+
+export const closeContainerModal = (modalData) => {
+	return {
+		type: typesCommon.CLOSE_CONTAINER_MODAL
+	};
+};
+
+export const toggleMenuBar = (hide) => {
+	return {
+		type: typesCommon.TOGGLE_MENU_BAR,
+		hide
+	};
+};
+
+export const changeWindowWidth = (windowWidth) => {
+	return {
+		type: typesCommon.CHANGE_WINDOW_WIDTH,
+		payload: { windowWidth }
+	};
+};
