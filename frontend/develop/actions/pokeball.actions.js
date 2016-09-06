@@ -11,10 +11,10 @@ export const getPokemons = (params) => (dispatch) => {
 
             // todo: Implement common mechanism for handle API response
             // Map API response
-            const mResponse = [] //normalizr.res.getAll(data.objects);
+            // const mResponse = []; // normalizr.res.getAll(data.objects);
 
             // Normalize API response
-            const nResponse = [] // normalize(mResponse, sc.pokeball.getPokemons());
+            const nResponse = []; // normalize(mResponse, sc.pokeball.getPokemons());
 
             dispatch(apiActions.success(pTypes.GET_POKEMONS, nResponse));
         },
@@ -28,13 +28,13 @@ export const getPokemon = (params) => (dispatch) => {
     dispatch(apiActions.request(pTypes.GET_POKEMON));
 
     return api.pokeball.getPokemon(params).then(
-        (data) => {
+        (/* data*/) => {
             // todo: Implement common mechanism for handle API response
             // Map API response
-            const mResponse = [] // normalizr.res.getOne(data);
+            // const mResponse = []; // normalizr.res.getOne(data);
 
             // Normalize API response
-            const nResponse = []// normalize(mResponse, sc.pokeball.getPokemon());
+            const nResponse = [];// normalize(mResponse, sc.pokeball.getPokemon());
 
             dispatch(apiActions.success(pTypes.GET_POKEMON, nResponse));
         },
