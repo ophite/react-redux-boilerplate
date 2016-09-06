@@ -1,5 +1,4 @@
 import types from '../actions/types/pokeball.types';
-import {XHR_STATE, reduceRequest} from './common.reducer';
 
 
 const DEFAULT_STATE = {
@@ -21,17 +20,17 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
 
+		case types.REQUEST_GET_POKEMON:
+			return reduceRequestPokemon(state, action);
 		case types.GET_POKEMON:
 			return reduceGetPokemon(state, action);
 
+		case types.REQUEST_GET_POKEMONS:
+			return reduceRequestPokemons(state, action);
 		case types.GET_POKEMONS:
 			return reduceGetPokemons(state, action);
 		case types.CLEAR_POKEMONS:
 			return reduceClearPokemons(state, action);
-
-		case types.REQUEST_GET_POKEMON:
-		case types.REQUEST_GET_POKEMONS:
-			return reduceRequest(state, action);
 
 		default:
 			return state;
@@ -39,7 +38,6 @@ export default (state = DEFAULT_STATE, action) => {
 };
 
 function reduceGetPokemon(state, action) {
-	debugger
 	const { pokemon } = action.payload;
 	return {
 		...state,
@@ -47,8 +45,18 @@ function reduceGetPokemon(state, action) {
 	};
 }
 
+function reduceRequestPokemon(state) {
+	const { pokemon } = state;
+	return {
+		...state,
+		pokemon: {
+			...pokemon,
+			isLoading: true
+		}
+	};
+}
+
 function reduceGetPokemons(state, action) {
-	debugger
 	const { paginator, items } = action.payload;
 	const { pokemons } = state;
 
@@ -62,6 +70,17 @@ function reduceGetPokemons(state, action) {
 				...pokemons.items,
 				...items
 			]
+		}
+	};
+}
+
+function reduceRequestPokemons(state) {
+	const { pokemons } = state;
+	return {
+		...state,
+		pokemons: {
+			...pokemons,
+			isLoading: true
 		}
 	};
 }

@@ -5,6 +5,10 @@ import Pokemon from '../../pokemons/Pokemon.jsx';
 class PokemonsPage extends Component {
 
 	renderPokemonsList(pokemons) {
+		if (pokemons.isLoading) {
+			return (<div>Loading</div>)
+		}
+		
 		const pokemonsView = pokemons.items.map((pokemon) => {
 			return (
 				<Pokemon
