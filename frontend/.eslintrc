@@ -1,0 +1,30 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "indent": [2, 4, {"SwitchCase": 1}],
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "no-param-reassign": [2, {props: false}],
+
+    // Legacy
+    "max-len": [2, 120, 4, { "ignoreComments": true, "ignoreUrls": true }],
+    "max-params": [2, 4],
+    "no-bitwise": 2,
+
+    // React
+    "react/jsx-indent": [2, 4]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  }
+}

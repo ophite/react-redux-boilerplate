@@ -1,0 +1,90 @@
+{
+  "name": "react-redux boilerplate",
+  "version": "1.0.0",
+  "description": "react-redux boilerplate",
+  "main": "app.js",
+  "scripts": {
+    "prod": "webpack -p",
+    "build": "webpack -d",
+    "devserver": "webpack-dev-server --history-api-fallback --debug --devtool eval-source-map --output-pathinfo --hot --inline --watch",
+    "lint": "eslint develop test --fix --cache --ignore-pattern .gitignore",
+    "lint:watch": "watch 'npm run lint' develop",
+    "test": "mocha --compilers js:babel-core/register --recursive --require ./test/setup.js",
+    "test:watch": "npm test -- --watch",
+    "clear": "rm -rf public/ node_modules/",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
+  },
+  "pre-commit": [
+    "precommit-msg",
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  },
+  "keywords": [
+    "Redux",
+    "React",
+    "ES2015",
+    "Babel",
+    "Webpack",
+    "Mocha",
+    "Chai"
+  ],
+  "author": {
+    "name": "Iurii Kobernyk",
+    "email": "kobernik.yura@gmail.com"
+  },
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "axios": "^0.11.1",
+    "classnames": "^2.2.1",
+    "rc-tooltip": "^3.3.2",
+    "babel-polyfill": "^6.9.1",
+    "query-string": "^3.0.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "react-router-redux": "^4.0.2",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
+    "history": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "chai": "^3.5.0",
+    "css-loader": "^0.22.0",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-import": "^1.9.2",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "expect": "^1.20.1",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^1.7.0",
+    "jsdom": "^7.2.2",
+    "json-loader": "^0.5.4",
+    "mocha": "^2.5.3",
+    "nock": "^4.1.0",
+    "node-sass": "^3.8.0",
+    "pre-commit": "^1.1.3",
+    "react-hot-loader": "^1.3.0",
+    "redux-logger": "^2.6.1",
+    "redux-mock-store": "^1.1.1",
+    "resolve-url-loader": "^1.6.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
