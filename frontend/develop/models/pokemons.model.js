@@ -4,31 +4,37 @@ class pokemonsModel {
 		this.isLoading = false;
 		this.paginator = {};
 		this.hasMore = false;
-		this.isEmpty = false;
 		this.items = [];
-		this.types = {};
 	};
 
-	static convertToModel = (pokemons) => {
-		const items = pokemons
+	static convertToModel = (res) => {
+		const items = res
 			.map((pokemon) => ({
 				id: pokemon.pkdx_id,
 				name: pokemon.name,
 				avatar: `http://pokeapi.co/media/img/${pokemon.pkdx_id}.png`,
 				types: pokemon.types
 			}));
+
 		return items;
 	};
 
-	static convertToModelPaginator = (paginator) => {
-		const data = {
-			limit: paginator.limit,
-			next: paginator.next,
-			offset: paginator.offset,
-			previous: paginator.previous,
-			total_count: paginator.total_count
+	static convertToModelPaginator = (res) => {
+		const paginator = {
+			limit: res.limit,
+			next: res.next,
+			offset: res.offset,
+			previous: res.previous,
+			total_count: res.total_count
 		};
-		return data;
+
+		return paginator;
+	};
+
+	static combineModel = (items, paginator) => {
+		return {
+			items, paginator
+		};
 	};
 
 	static reduceModel = (state, payload) => {
@@ -41,6 +47,13 @@ class pokemonsModel {
 				...state.items,
 				...items
 			]
+		}
+	};
+
+	static reduceModelRequest = (state) => {
+		return {
+			...state,
+			isLoading: true
 		}
 	};
 }

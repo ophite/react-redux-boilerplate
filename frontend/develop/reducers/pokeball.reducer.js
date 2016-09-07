@@ -1,14 +1,12 @@
 import types from '../actions/types/pokeball.types';
 import pokemonsModel from '../models/pokemons.model';
+import pokemonModel from '../models/pokemon.model';
+
 
 const DEFAULT_STATE = {
-	pokemon: {
-		isLoading: false,
-		types: {}
-	},
+	pokemon: new pokemonModel(),
 	pokemons: new pokemonsModel()
 };
-
 
 export default (state = DEFAULT_STATE, action) => {
 	switch (action.type) {
@@ -31,46 +29,36 @@ export default (state = DEFAULT_STATE, action) => {
 };
 
 function reduceGetPokemon(state, action) {
-	const { pokemon } = action.payload;
 	return {
 		...state,
-		pokemon
+		pokemon: pokemonModel.reduceModel(state.pokemon, action.payload)
 	};
 }
 
 function reduceRequestPokemon(state) {
-	const { pokemon } = state;
 	return {
 		...state,
-		pokemon: {
-			...pokemon,
-			isLoading: true
-		}
+		pokemon: pokemonModel.reduceModelRequest(state.pokemon)
 	};
 }
 
 function reduceGetPokemons(state, action) {
-	const { pokemons } = state;
 	return {
 		...state,
-		pokemons: pokemonsModel.reduceModel(pokemons, action.payload)
+		pokemons: pokemonsModel.reduceModel(state.pokemons, action.payload)
 	};
 }
 
 function reduceRequestPokemons(state) {
-	const { pokemons } = state;
 	return {
 		...state,
-		pokemons: {
-			...pokemons,
-			isLoading: true
-		}
+		pokemons: pokemonsModel.reduceModelRequest(state.pokemons)
 	};
 }
 
 function reduceClearPokemons(state) {
 	return {
 		...state,
-		pokemons: { ...DEFAULT_STATE.pokemons }
+		pokemons: new pokemonsModel()
 	};
 }

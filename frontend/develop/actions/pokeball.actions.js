@@ -3,6 +3,7 @@ import * as actionsCommon from './common.actions';
 import typesPokemons from './types/pokeball.types';
 import mapperPokemon from '../utils/mappers/pokemons.mapper';
 import pokemonsModel from '../models/pokemons.model';
+import pokemonModel from '../models/pokemon.model';
 
 
 export const actionGetPokemons = (params) => (dispatch) => {
@@ -17,7 +18,7 @@ export const actionGetPokemons = (params) => (dispatch) => {
 			const paginator = pokemonsModel.convertToModelPaginator(meta);
 
 			dispatch(actionsCommon.success(typesPokemons.GET_POKEMONS,
-				{ items, paginator }
+				pokemonsModel.combineModel(items, paginator)
 			));
 		})
 		.catch(actionsCommon.fail(dispatch));
@@ -29,8 +30,10 @@ export const actionGetPokemon = (params) => (dispatch) => {
 	return api.pokeball
 		.getPokemon(params)
 		.then((data) => {
-			const pokemon = mapperPokemon.res.getOne(data);
-			dispatch(actionsCommon.success(typesPokemons.GET_POKEMON, { pokemon }));
+			const pokemon = pokemonModel.convertToModel(data);
+			dispatch(actionsCommon.success(typesPokemons.GET_POKEMON,
+				pokemonModel.combineModel(pokemon)
+			));
 		})
 		.catch(actionsCommon.fail(dispatch));
 };
