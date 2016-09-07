@@ -11,7 +11,7 @@ export const actionGetPokemons = (params) => (dispatch) => {
 	return api.pokeball
 		.getPokemons(params)
 		.then(({ meta, objects }) => {
-			dispatch(actionsCommon.success(typesPokemons.CLEAR_POKEMONS));
+			// dispatch(actionsCommon.success(typesPokemons.CLEAR_POKEMONS));
 
 			const items = pokemonsModel.convertToModel(objects);
 			const paginator = pokemonsModel.convertToModelPaginator(meta);

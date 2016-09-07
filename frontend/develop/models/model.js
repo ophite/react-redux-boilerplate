@@ -8,14 +8,14 @@ class model {
 		return {
 			...state,
 			isLoading: false
-		}
+		};
 	};
 
 	static reduceModelRequest = (state) => {
 		return {
 			...state,
 			isLoading: true
-		}
+		};
 	};
 }
 

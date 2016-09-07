@@ -44,7 +44,7 @@ class pokemonsModel extends model {
 		const { items, paginator } = payload;
 		const newState = {
 			paginator,
-			hasMore: true, // TODO hasMore must be in paginator maybe or calc by paginator
+			hasMore: paginator.offset < paginator.total_count,
 			items: [
 				...state.items,
 				...items
@@ -52,6 +52,14 @@ class pokemonsModel extends model {
 		};
 
 		return model.reduceModel(newState);
+	};
+
+	static reduceModelRequest = (state) => {
+		const newState = model.reduceModelRequest(state);
+		return {
+			...state,
+			isFirstLoading: newState.isLoading && (!newState.items || newState.items.length === 0)
+		};
 	};
 }
 

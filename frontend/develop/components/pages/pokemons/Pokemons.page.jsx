@@ -1,12 +1,12 @@
 import Pokemon from '../../pokemons/Pokemon.jsx';
-import InfiniteScroll from '../../controls/infiniteScroll/InfiniteScroll.container.jsx';
+import InfiniteScroll from '../../controls/infiniteScroll/InfiniteScroll.container.h';
 
 
 class PokemonsPage extends React.Component {
 
 	renderPokemonsList() {
 		const { handleGetPokemons, pokemons } = this.props;
-		if (pokemons.isLoading && (!pokemons.items || pokemons.items.length === 0)) {
+		if (pokemons.isFirstLoading) {
 			return (<div>Loading</div>)
 		}
 
@@ -24,7 +24,7 @@ class PokemonsPage extends React.Component {
 			<InfiniteScroll
 				loader={<div>Loading...</div>}
 				next={handleGetPokemons}
-				hasMoreNext={true}
+				hasMoreNext={pokemons.hasMore}
 				hasMorePrev={false}>
 				{pokemonsView}
 			</InfiniteScroll>
