@@ -1,7 +1,10 @@
-class pokemonModel {
+import model from './model';
 
-	constructor() {
-		this.isLoading = false;
+
+class pokemonModel extends model {
+
+	constructor(props) {
+		super(props);
 		this.types = [];
 	};
 
@@ -32,17 +35,8 @@ class pokemonModel {
 
 	static reduceModel = (state, payload) => {
 		const { item } = payload;
-		return {
-			isLoading: false,
-			...item
-		}
-	};
-
-	static reduceModelRequest = (state) => {
-		return {
-			...state,
-			isLoading: true
-		}
+		const newState = { ...item };
+		return model.reduceModel(newState);
 	};
 }
 

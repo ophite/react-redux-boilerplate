@@ -1,7 +1,9 @@
-class pokemonsModel {
+import model from './model';
 
-	constructor() {
-		this.isLoading = false;
+class pokemonsModel extends model {
+
+	constructor(props) {
+		super(props);
 		this.paginator = {};
 		this.hasMore = false;
 		this.items = [];
@@ -40,22 +42,16 @@ class pokemonsModel {
 
 	static reduceModel = (state, payload) => {
 		const { items, paginator } = payload;
-		return {
-			isLoading: false,
+		const newState = {
 			paginator,
 			hasMore: true, // TODO hasMore must be in paginator maybe or calc by paginator
 			items: [
 				...state.items,
 				...items
 			]
-		}
-	};
+		};
 
-	static reduceModelRequest = (state) => {
-		return {
-			...state,
-			isLoading: true
-		}
+		return model.reduceModel(newState);
 	};
 }
 
