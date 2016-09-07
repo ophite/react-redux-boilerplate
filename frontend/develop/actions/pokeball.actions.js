@@ -2,6 +2,7 @@ import api from '../api';
 import * as actionsCommon from './common.actions';
 import typesPokemons from './types/pokeball.types';
 import mapperPokemon from '../utils/mappers/pokemons.mapper';
+import pokemonsModel from '../models/pokemons.model';
 
 
 export const actionGetPokemons = (params) => (dispatch) => {
@@ -12,8 +13,8 @@ export const actionGetPokemons = (params) => (dispatch) => {
 		.then(({ meta, objects }) => {
 			dispatch(actionsCommon.success(typesPokemons.CLEAR_POKEMONS));
 
-			const items = mapperPokemon.res.getAll(objects);
-			const paginator = mapperPokemon.res.getPaginator(meta);
+			const items = pokemonsModel.convertToModel(objects);
+			const paginator = pokemonsModel.convertToModelPaginator(meta);
 
 			dispatch(actionsCommon.success(typesPokemons.GET_POKEMONS,
 				{ items, paginator }

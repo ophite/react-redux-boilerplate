@@ -1,19 +1,12 @@
 import types from '../actions/types/pokeball.types';
-
+import pokemonsModel from '../models/pokemons.model';
 
 const DEFAULT_STATE = {
 	pokemon: {
 		isLoading: false,
 		types: {}
 	},
-	pokemons: {
-		isLoading: false,
-		paginator: {},
-		hasMore: false,
-		isEmpty: false,
-		items: [],
-		types: {}
-	}
+	pokemons: new pokemonsModel()
 };
 
 
@@ -57,20 +50,10 @@ function reduceRequestPokemon(state) {
 }
 
 function reduceGetPokemons(state, action) {
-	const { paginator, items } = action.payload;
 	const { pokemons } = state;
-
 	return {
 		...state,
-		pokemons: {
-			isLoading: false,
-			paginator,
-			hasMore: true, // TODO hasMore must be in paginator maybe or calc by paginator
-			items: [
-				...pokemons.items,
-				...items
-			]
-		}
+		pokemons: pokemonsModel.reduceModel(pokemons, action.payload)
 	};
 }
 

@@ -43,13 +43,17 @@ PokemonsContainer.propTypes = {
 	handleClearDataState: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({
-	pokemons: state.pokeball.pokemons
-});
+const mapStateToProps = (state) => {
+	return {
+		pokemons: state.pokeball.pokemons
+	}
+};
 
-const mapDispatchToProps = (dispatch) => ({
-	handleActionGetPokemons: bindActionCreators(actionGetPokemons, dispatch),
-	handleActionClearPokemons: bindActionCreators(actionClearPokemons, dispatch)
-});
+const mapDispatchToProps = (dispatch) => {
+	return {
+		handleActionGetPokemons: bindActionCreators(actionGetPokemons, dispatch),
+		handleActionClearPokemons: bindActionCreators(actionClearPokemons, dispatch)
+	}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonsContainer);
