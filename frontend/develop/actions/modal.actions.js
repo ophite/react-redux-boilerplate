@@ -1,10 +1,10 @@
-import mTypes from './types/modal.types';
+import typesModal from './types/modal.types';
 
 export const openModal = (key) => ({
-    type: mTypes.OPEN_MODAL,
-    key,
+	type: typesModal.OPEN_MODAL,
+	key
 });
 
 export const closeModal = () => ({
-    type: mTypes.CLOSE_MODAL,
+	type: typesModal.CLOSE_MODAL
 });

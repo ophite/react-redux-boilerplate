@@ -1,7 +1,7 @@
 'use strict';
 
 import typesCommon from './types/common.types';
-import modalContainerTypes from '../constants/containersTypes.constant.js';
+import typesModalContainer from '../constants/containersTypes.constant.js';
 import appHistory   from '../config/appHistory';
 import routes from '../constants/routes.constant';
 
@@ -12,7 +12,7 @@ export const fail = (dispatch) => {
 			// dispatch(brokenToken(true));
 			// appHistory.push(routes.trends());
 			dispatch(openContainerModal({
-				type: modalContainerTypes.AUTH
+				type: typesModalContainer.AUTH
 			}));
 		} else if (error && error.status === 404) {
 			appHistory.replace(routes.notFound());

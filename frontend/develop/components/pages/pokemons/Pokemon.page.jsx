@@ -5,6 +5,14 @@ import PokemonExt from '../../pokemons/PokemonExt.jsx';
 class PokemonPage extends Component {
 
 	renderPokemonCard(pokemon) {
+		if (pokemon.isLoading) {
+			return (
+				<div>
+					<p>Loading...</p>
+				</div>
+			);
+		}
+
 		return (
 			<PokemonExt pokemon={pokemon}/>
 		);
@@ -12,18 +20,9 @@ class PokemonPage extends Component {
 
 	render() {
 		const { pokemon } = this.props;
-
 		return (
-			<div className="row">
-				{
-					pokemon.isLoading ?
-						(
-							<div className="col-xs-12 col-sm-12 col-md-12">
-								<p className="text-center">Loading...</p>
-							</div>
-						)
-						: (this.renderPokemonCard(pokemon))
-				}
+			<div>
+				{this.renderPokemonCard(pokemon)}
 			</div>
 		);
 	}

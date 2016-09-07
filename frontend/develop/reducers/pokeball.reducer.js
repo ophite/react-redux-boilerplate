@@ -28,37 +28,37 @@ export default (state = DEFAULT_STATE, action) => {
 	}
 };
 
-function reduceGetPokemon(state, action) {
+const reduceGetPokemon = (state, action) => {
 	return {
 		...state,
 		pokemon: pokemonModel.reduceModel(state.pokemon, action.payload)
 	};
-}
+};
 
-function reduceRequestPokemon(state) {
+const reduceRequestPokemon = (state) => {
 	return {
 		...state,
 		pokemon: pokemonModel.reduceModelRequest(state.pokemon)
 	};
-}
+};
 
-function reduceGetPokemons(state, action) {
+const reduceGetPokemons = (state, action) => {
 	return {
 		...state,
 		pokemons: pokemonsModel.reduceModel(state.pokemons, action.payload)
 	};
-}
+};
 
-function reduceRequestPokemons(state) {
+const reduceRequestPokemons = (state) => {
 	return {
 		...state,
 		pokemons: pokemonsModel.reduceModelRequest(state.pokemons)
 	};
-}
+};
 
-function reduceClearPokemons(state) {
+const reduceClearPokemons = (state) => {
 	return {
 		...state,
 		pokemons: new pokemonsModel()
 	};
-}
+};

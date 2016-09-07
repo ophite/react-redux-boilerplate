@@ -1,7 +1,6 @@
 import api from '../api';
 import * as actionsCommon from './common.actions';
 import typesPokemons from './types/pokeball.types';
-import mapperPokemon from '../utils/mappers/pokemons.mapper';
 import pokemonsModel from '../models/pokemons.model';
 import pokemonModel from '../models/pokemon.model';
 

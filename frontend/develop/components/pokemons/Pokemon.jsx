@@ -3,41 +3,42 @@ import {Link} from 'react-router';
 
 import routes from '../../constants/routes.constant';
 
+
 class Pokemon extends Component {
 
 	renderPokemonTypes(types) {
-		return types.map(type => {
-				return (
-					<span key={type.name} className="label label-info">
-						{type.name}
-					</span>
-				);
-			}
-		);
+		return types
+			.map(type => {
+					return (
+						<span key={type.name}>
+							{type.name}
+						</span>
+					);
+				}
+			);
 	}
 
 	render() {
-		const { pokemon, allTypes } = this.props;
+		const { pokemon } = this.props;
 		const pokemonRoute = routes.pokeball.getPokemon(pokemon.id);
 
 		return (
-			<div className="col-xs-6 col-sm-4 col-md-3">
-				<div className="card">
-					<a className="text-center">
+			<div>
+				<div>
+					<a>
 						<img
 							src={pokemon.avatar}
 							alt={pokemon.name}
-							className="card-img-top"
 						/>
 					</a>
-					<div className="card-block">
-						<h4 className="card-title text-center">
+					<div>
+						<h4>
 							{pokemon.name}
 						</h4>
-						<p className="card-text">
+						<p>
 							{this.renderPokemonTypes(pokemon.types)}
 						</p>
-						<Link to={pokemonRoute} className="btn btn-secondary">
+						<Link to={pokemonRoute}>
 							Go details
 						</Link>
 					</div>
