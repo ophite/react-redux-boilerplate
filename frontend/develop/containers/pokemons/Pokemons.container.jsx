@@ -4,14 +4,19 @@ import PokemonsPage from '../../components/pages/pokemons/Pokemons.page.jsx';
 class PokemonsContainer extends React.Component {
 
 	componentDidMount() {
-		const { handleActionGetPokemons } = this.props;
-		handleActionGetPokemons({ limit: 12 });
+		this.handleActionGetPokemons();
 	}
 
 	componentWillUnmount() {
 		const { handleActionClearPokemons } = this.props;
 		handleActionClearPokemons();
 	}
+
+	handleActionGetPokemons = () => {
+		const { handleActionGetPokemons, pokemons } = this.props;
+		const offset = pokemons.paginator.offset > 0 ? pokemons.paginator.offset : 0;
+		handleActionGetPokemons({ limit: 12, offset });
+	};
 
 	handleGetPokemonsNext() {
 		const { handleActionGetPokemons } = this.props;
@@ -24,7 +29,7 @@ class PokemonsContainer extends React.Component {
 		return (
 			<PokemonsPage
 				pokemons={pokemons}
-				handleGetPokemons={this.handleGetPokemonsNext.bind(this)}
+				handleGetPokemons={this.handleActionGetPokemons.bind(this)}
 			/>
 		);
 	}

@@ -1,10 +1,12 @@
 import Pokemon from '../../pokemons/Pokemon.jsx';
+import InfiniteScroll from '../../controls/infiniteScroll/InfiniteScroll.container.jsx';
 
 
 class PokemonsPage extends React.Component {
 
-	renderPokemonsList(pokemons) {
-		if (pokemons.isLoading) {
+	renderPokemonsList() {
+		const { handleGetPokemons, pokemons } = this.props;
+		if (pokemons.isLoading && (!pokemons.items || pokemons.items.length === 0)) {
 			return (<div>Loading</div>)
 		}
 
@@ -18,16 +20,23 @@ class PokemonsPage extends React.Component {
 			);
 		});
 
-		return pokemonsView;
+		return (
+			<InfiniteScroll
+				loader={<div>Loading...</div>}
+				next={handleGetPokemons}
+				hasMoreNext={true}
+				hasMorePrev={false}>
+				{pokemonsView}
+			</InfiniteScroll>
+		);
 	}
 
 	render() {
-		const { pokemons } = this.props;
-		const style = { height: 500, overflowY: 'auto', position: 'relative', outline: '1px solid red' };
+		const style = { /*height: 500, overflowY: 'auto',*/ position: 'relative', outline: '1px solid red' };
 
 		return (
 			<div style={style}>
-				{this.renderPokemonsList(pokemons)}
+				{this.renderPokemonsList()}
 			</div>
 		);
 	}
