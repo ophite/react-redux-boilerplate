@@ -1,9 +1,8 @@
-import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import routes from '../../constants/routes.constant';
 
 
-class PokemonExt extends Component {
+class PokemonExt extends React.Component {
 
 	render() {
 		const { pokemon } = this.props;
@@ -11,7 +10,7 @@ class PokemonExt extends Component {
 		const center = { textAlign: 'center' };
 
 		return (
-			<div className="row">
+			<div>
 				<div>
 					<p style={center}>
 						<img
@@ -75,7 +74,7 @@ class PokemonExt extends Component {
 }
 
 PokemonExt.propTypes = {
-	pokemon: PropTypes.object
+	pokemon: React.PropTypes.object
 };
 
 export default PokemonExt;

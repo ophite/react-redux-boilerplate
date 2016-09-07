@@ -1,14 +1,13 @@
-import React, {Component, PropTypes} from 'react';
 import Pokemon from '../../pokemons/Pokemon.jsx';
 
 
-class PokemonsPage extends Component {
+class PokemonsPage extends React.Component {
 
 	renderPokemonsList(pokemons) {
 		if (pokemons.isLoading) {
 			return (<div>Loading</div>)
 		}
-		
+
 		const pokemonsView = pokemons.items.map((pokemon) => {
 			return (
 				<Pokemon
@@ -27,7 +26,7 @@ class PokemonsPage extends Component {
 		const style = { height: 500, overflowY: 'auto', position: 'relative', outline: '1px solid red' };
 
 		return (
-			<div className="row" style={style}>
+			<div style={style}>
 				{this.renderPokemonsList(pokemons)}
 			</div>
 		);
@@ -35,8 +34,8 @@ class PokemonsPage extends Component {
 }
 
 PokemonsPage.propTypes = {
-	pokemons: PropTypes.object,
-	handleGetPokemons: PropTypes.func
+	pokemons: React.PropTypes.object,
+	handleGetPokemons: React.PropTypes.func
 };
 
 export default PokemonsPage;

@@ -1,4 +1,3 @@
-import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -7,9 +6,9 @@ import {actionGetPokemons, actionClearPokemons} from '../../actions/pokeball.act
 
 
 PokemonsContainer.propTypes = {
-	pokemons: PropTypes.object,
-	handleGetPokemons: PropTypes.func,
-	handleClearDataState: PropTypes.func
+	pokemons: React.PropTypes.object,
+	handleGetPokemons: React.PropTypes.func,
+	handleClearDataState: React.PropTypes.func
 };
 
 const mapStateToProps = (state) => {

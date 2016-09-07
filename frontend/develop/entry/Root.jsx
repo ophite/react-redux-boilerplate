@@ -1,13 +1,10 @@
-'use strict';
-
-import React, {Component, PropTypes} from 'react';
 import {Router} from 'react-router';
 import {Provider} from 'react-redux';
 
 import Routes from './Routes.jsx';
 
 
-class Root extends Component {
+class Root extends React.Component {
 
 	render() {
 		const { store, history } = this.props;
@@ -20,9 +17,9 @@ class Root extends Component {
 }
 
 Root.propTypes = {
-	store: PropTypes.object,
-	routes: PropTypes.object,
-	history: PropTypes.object
+	store: React.PropTypes.object,
+	routes: React.PropTypes.object,
+	history: React.PropTypes.object
 };
 
 export default Root;

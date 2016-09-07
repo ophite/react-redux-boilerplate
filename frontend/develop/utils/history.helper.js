@@ -2,6 +2,8 @@ import appHistory from '../config/appHistory';
 import {mandatory} from './valadation.helper';
 import {isEmpty} from './helper';
 
+
+// TODO ?
 export const handlePush = ({ pathname, query, state }) => {
 	const historyObject = {};
 

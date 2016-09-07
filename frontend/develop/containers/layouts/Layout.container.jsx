@@ -1,8 +1,7 @@
-import React, {Component, PropTypes} from 'react';
 import LayoutPage from '../../components/pages/layouts/Layout.page.jsx';
 
 
-class Layout extends Component {
+class Layout extends React.Component {
 
 	handleKeyDown(e) {
 		const { isModalOpen, handleCloseModal } = this.props;

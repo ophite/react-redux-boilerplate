@@ -1,46 +1,85 @@
-import React, { Component, PropTypes } from 'react';
-
 import ModalContainer from '../../../containers/modal/Modal.container.jsx';
 
-export default class LayoutPage extends Component {
-    renderContainerModal() {
-        const { windowWidth, isModalOpen, containerModalData, handleKeyDown } = this.props;
 
-        return !isModalOpen
-            ? null
-            : (
-                <ModalContainer
-                  onKeyDown={handleKeyDown}
-                  windowWidth={windowWidth}
-                  containerModalData={containerModalData}
-                />
-            );
-    }
+export default class LayoutPage extends React.Component {
 
-    render() {
-        const { children } = this.props;
-        const headerStyle = { textAlign: 'center', paddingTop: '15px' };
+	renderContainerModal() {
+		const {
+			windowWidth,
+			isContainerModalOpen,
+			containerModalData,
+			handleKeyDown
+		} = this.props;
 
-        return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-xs-12 col-sm-12 col-md-12">
-                        <h2 style={headerStyle}> Pokemon test </h2>
-                    </div>
-                </div>
-                <hr />
-                {children}
+		if (!isContainerModalOpen) {
+			return (null);
+		}
 
-                {this.renderContainerModal()}
-            </div>
-        );
-    }
+		return (
+			<ModalContainer
+				onKeyDown={handleKeyDown}
+				windowWidth={windowWidth}
+				containerModalData={containerModalData}
+			/>
+		);
+	}
+
+	renderModal = () => {
+		const {
+			modalData,
+			isModalOpen,
+		} = this.props;
+
+		if (!isModalOpen) {
+			return (null);
+		}
+
+		return (
+			<Modal
+				{...modalData}
+				isOpen={true}
+			/>
+		);
+	};
+
+	renderContent = () => {
+		const {
+			children
+		} = this.props;
+		const headerStyle = { textAlign: 'center', paddingTop: '15px' };
+
+		// const childrenClone = React.cloneElement(children, { isMobile });
+
+		return (
+			<div>
+				<div>
+					<div>
+						<h2 style={headerStyle}> Pokemon test </h2>
+					</div>
+				</div>
+				<hr />
+				{children}
+			</div>
+		);
+	};
+
+	render() {
+		return (
+			<div>
+				{this.renderContainerModal()}
+				{this.renderModal()}
+				{this.renderContent()}
+			</div>
+		);
+	}
 }
 
 LayoutPage.propTypes = {
-    children: PropTypes.element,
-    windowWidth: PropTypes.number,
-    handleKeyDown: PropTypes.func,
-    containerModalData: PropTypes.object,
-    isModalOpen: PropTypes.bool,
+	children: React.PropTypes.element,
+	windowWidth: React.PropTypes.number,
+	handleKeyDown: React.PropTypes.func,
+	containerModalData: React.PropTypes.object,
+	isModalOpen: React.PropTypes.bool,
+	isContainerModalOpen: React.PropTypes.bool,
+	modalData: React.PropTypes.object
 };

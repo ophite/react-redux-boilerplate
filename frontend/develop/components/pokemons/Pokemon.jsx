@@ -1,10 +1,8 @@
-import React, {Component, PropTypes} from 'react'; // TODO move to define plugin
 import {Link} from 'react-router';
-
 import routes from '../../constants/routes.constant';
 
 
-class Pokemon extends Component {
+class Pokemon extends React.Component {
 
 	renderPokemonTypes(types) {
 		return types
@@ -49,8 +47,8 @@ class Pokemon extends Component {
 }
 
 Pokemon.propTypes = {
-	pokemon: PropTypes.object,
-	allTypes: PropTypes.array
+	pokemon: React.PropTypes.object,
+	allTypes: React.PropTypes.array
 };
 
 export default Pokemon;

@@ -1,8 +1,7 @@
-import React, {Component, PropTypes} from 'react';
 import PokemonPage from '../../components/pages/pokemons/Pokemon.page.jsx';
 
 
-class PokemonContainer extends Component {
+class PokemonContainer extends React.Component {
 
 	componentDidMount() {
 		const { params, handleActionGetPokemon } = this.props;

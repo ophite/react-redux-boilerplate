@@ -1,8 +1,7 @@
-import React, {Component, PropTypes} from 'react';
 import PokemonExt from '../../pokemons/PokemonExt.jsx';
 
 
-class PokemonPage extends Component {
+class PokemonPage extends React.Component {
 
 	renderPokemonCard(pokemon) {
 		if (pokemon.isLoading) {
@@ -29,7 +28,7 @@ class PokemonPage extends Component {
 }
 
 PokemonPage.propTypes = {
-	pokemon: PropTypes.object
+	pokemon: React.PropTypes.object
 };
 
 export default PokemonPage;

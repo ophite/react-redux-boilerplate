@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react';
 import Containers from '../../constants/containers.constant';
 
-class ModalContainer extends Component {
+
+class ModalContainer extends React.Component {
 
 	getContainer(key) {
 		return Containers[ key ];
@@ -24,9 +24,9 @@ class ModalContainer extends Component {
 }
 
 ModalContainer.propTypes = {
-	onKeyDown: PropTypes.func,
-	windowWidth: PropTypes.number,
-	containerModalData: PropTypes.object
+	onKeyDown: React.PropTypes.func,
+	windowWidth: React.PropTypes.number,
+	containerModalData: React.PropTypes.object
 };
 
 export default ModalContainer;
