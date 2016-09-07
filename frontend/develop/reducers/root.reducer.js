@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux';
+import {routerReducer} from 'react-router-redux';
 
 /**
  * Reducers
@@ -8,7 +9,8 @@ import common from './common.reducer';
 
 const rootReducer = combineReducers({
 	pokeball,
-	common
+	common,
+	routing: routerReducer
 });
 
 export default rootReducer;

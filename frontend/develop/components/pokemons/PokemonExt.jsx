@@ -24,46 +24,48 @@ class PokemonExt extends Component {
 							{pokemon.name} #{pokemon.id}
 						</h4>
 						<table>
-							<tr>
-								<td>Attack</td>
-								<td>{pokemon.attack}</td>
-							</tr>
-							<tr>
-								<td>Defense</td>
-								<td>{pokemon.defense}</td>
-							</tr>
-							<tr>
-								<td>HP</td>
-								<td>{pokemon.hp}</td>
-							</tr>
-							<tr>
-								<td>SP Attack</td>
-								<td>{pokemon.spAtk}</td>
-							</tr>
-							<tr>
-								<td>SP Defence</td>
-								<td>{pokemon.spDef}</td>
-							</tr>
-							<tr>
-								<td>Speed</td>
-								<td>{pokemon.speed}</td>
-							</tr>
-							<tr>
-								<td>Weight</td>
-								<td>{pokemon.weight}</td>
-							</tr>
-							<tr>
-								<td>Total moves</td>
-								<td>{pokemon.totalMoves}</td>
-							</tr>
-							<tr>
-								<td/>
-								<td>
-									<Link to={pokemonsRoute}>
-										back
-									</Link>
-								</td>
-							</tr>
+							<tbody>
+								<tr>
+									<td>Attack</td>
+									<td>{pokemon.attack}</td>
+								</tr>
+								<tr>
+									<td>Defense</td>
+									<td>{pokemon.defense}</td>
+								</tr>
+								<tr>
+									<td>HP</td>
+									<td>{pokemon.hp}</td>
+								</tr>
+								<tr>
+									<td>SP Attack</td>
+									<td>{pokemon.spAtk}</td>
+								</tr>
+								<tr>
+									<td>SP Defence</td>
+									<td>{pokemon.spDef}</td>
+								</tr>
+								<tr>
+									<td>Speed</td>
+									<td>{pokemon.speed}</td>
+								</tr>
+								<tr>
+									<td>Weight</td>
+									<td>{pokemon.weight}</td>
+								</tr>
+								<tr>
+									<td>Total moves</td>
+									<td>{pokemon.totalMoves}</td>
+								</tr>
+								<tr>
+									<td/>
+									<td>
+										<Link to={pokemonsRoute}>
+											back
+										</Link>
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 				</div>

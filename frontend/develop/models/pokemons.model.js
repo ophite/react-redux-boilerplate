@@ -12,7 +12,8 @@ class pokemonsModel {
 			.map((pokemon) => ({
 				id: pokemon.pkdx_id,
 				name: pokemon.name,
-				avatar: `http://pokeapi.co/media/img/${pokemon.pkdx_id}.png`,
+				// avatar: `http://pokeapi.co/media/img/${pokemon.pkdx_id}.png`,
+				avatar: `https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/sprites/pokemon/model/${pokemon.pkdx_id}.png`,
 				types: pokemon.types
 			}));
 

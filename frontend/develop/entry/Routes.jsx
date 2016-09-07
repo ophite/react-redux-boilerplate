@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, IndexRoute, IndexRedirect} from 'react-router';
 
-import App from './../containers/App.jsx';
+import App from '../containers/layouts/App.jsx';
 import Layout from '../containers/layouts/Layout.container.h';
 import Pokemon from '../containers/pokemons/Pokemon.container.h';
 import Pokemons from '../containers/pokemons/Pokemons.container.h';
@@ -20,6 +20,7 @@ export default (
 		</Route>
 	</Route>
 );
+
 
 // TODO
 // <Route path="404" component={NotFoundPage}/>

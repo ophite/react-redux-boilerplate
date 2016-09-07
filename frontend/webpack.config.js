@@ -2,17 +2,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: './develop/app.js',
+    entry: './develop/entry/app.js',
     devServer: {
         inline: true,
         host: '0.0.0.0',
         port: 3031,
-        contentBase: './public',
+        contentBase: './public'
     },
     output: {
         path: path.join(__dirname, '/public/static/build/'),
         filename: 'main.js',
-        publicPath: 'static/build/',
+        publicPath: 'static/build/'
     },
     module: {
         loaders: [
@@ -28,16 +28,16 @@ module.exports = {
             { test: /\.jsx$/, loader: 'react-hot!babel', exclude: [/node_modules/, /public/] },
             { test: /\.js$/, loader: 'babel', exclude: [/node_modules/, /public/] },
 
-            { test: /\.json$/, loader: 'json' },
-        ],
+            { test: /\.json$/, loader: 'json' }
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
             filename: '../../index.html',
-            template: 'develop/index.html',
-        }),
+            template: 'develop/index.html'
+        })
     ],
     eslint: {
-        configFile: '.eslintrc',
-    },
+        configFile: '.eslintrc'
+    }
 };

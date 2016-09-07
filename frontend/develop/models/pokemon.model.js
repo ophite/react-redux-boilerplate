@@ -9,7 +9,8 @@ class pokemonModel {
 		const item = {
 			id: res.pkdx_id,
 			name: res.name,
-			avatar: `http://pokeapi.co/media/img/${res.pkdx_id}.png`,
+			// avatar: `http://pokeapi.co/media/img/${res.pkdx_id}.png`,
+			avatar: `https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/sprites/pokemon/model/${res.pkdx_id}.png`,
 			attack: res.attack,
 			defense: res.defense,
 			hp: res.hp,
