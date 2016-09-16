@@ -24,7 +24,7 @@ export default class LayoutPage extends React.Component {
 		);
 	}
 
-	renderModal = () => {
+	renderModal() {
 		const {
 			modalData,
 			isModalOpen,
@@ -40,28 +40,27 @@ export default class LayoutPage extends React.Component {
 				isOpen={true}
 			/>
 		);
-	};
+	}
 
-	renderContent = () => {
+	renderContent() {
 		const {
 			children
 		} = this.props;
 		const headerStyle = { textAlign: 'center', paddingTop: '15px' };
-
 		// const childrenClone = React.cloneElement(children, { isMobile });
 
 		return (
 			<div>
 				<div>
 					<div>
-						<h2 style={headerStyle}> Pokemon test </h2>
+						<h2 style={headerStyle}> Pokemon test</h2>
 					</div>
 				</div>
 				<hr />
 				{children}
 			</div>
 		);
-	};
+	}
 
 	render() {
 		return (

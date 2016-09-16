@@ -5,9 +5,10 @@ import InfiniteScroll from '../../controls/infiniteScroll/InfiniteScroll.contain
 class PokemonsPage extends React.Component {
 
 	renderPokemonsList() {
+
 		const { handleGetPokemons, pokemons } = this.props;
 		if (pokemons.isFirstLoading) {
-			return (<div>Loading</div>)
+			return (<div>Loadings </div>)
 		}
 
 		const pokemonsView = pokemons.items.map((pokemon) => {
