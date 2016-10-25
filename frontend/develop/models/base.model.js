@@ -47,19 +47,18 @@ class model {
             ...params
         };
     };
-    debugger
 
-    static reduceRequest(state, action) {
+    static reduceRequest(stateModel, action, state) {
         const { model } = action.payload;
         return {
             [model.MODEL_NAME]: {
-                ...state,
+                ...stateModel,
                 isLoading: true
             }
         };
     };
 
-    static reduceGet(state, action) {
+    static reduceGet(stateModel, action, state) {
         const { model, modelClient } = action.payload;
         return {
             [model.MODEL_NAME]: {
@@ -69,7 +68,7 @@ class model {
         };
     };
 
-    static reduceClear(state, action) {
+    static reduceClear(stateModel, action, state) {
         const { model } = action.payload;
         return {
             [model.MODEL_NAME]: {

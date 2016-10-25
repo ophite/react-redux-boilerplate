@@ -1,4 +1,3 @@
-
 // Use browser history with server side settings (history-api-fallback)
 // Ex. For node express see 'express-history-api-fallback'
 // For webpack dev server run with '--history-api-fallback' flag
