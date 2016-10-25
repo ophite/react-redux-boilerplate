@@ -2,92 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3fa85bd5-7309-4afa-a546-8d6c7df150ce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/controls/button/Button.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/controls/infiniteScroll/InfiniteScroll.component.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/controls/infiniteScroll/InfiniteScroll.container.h.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/controls/infiniteScroll/InfiniteScroll.container.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/controls/infiniteScroll/helper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/controls/modal/Modal.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/pokemons/Pokemon.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/constants/containers.constant.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/constants/containersTypes.constant.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/constants/routes.constant.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/containers/layouts/App.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/containers/layouts/Layout.container.h.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/containers/layouts/Layout.container.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/entry/Root.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/entry/Routes.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/store/root.store.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/helper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/history.helper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/utils/isMobile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack.config.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/components/controls/button/Button.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/components/controls/infiniteScroll/InfiniteScroll.component.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/components/controls/infiniteScroll/InfiniteScroll.container.h.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/components/controls/infiniteScroll/InfiniteScroll.container.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/components/controls/infiniteScroll/helper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/components/controls/modal/Modal.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/components/pokemons/Pokemon.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/constants/containers.constant.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/constants/containersTypes.constant.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/constants/routes.constant.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/containers/layouts/App.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/containers/layouts/Layout.container.h.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/containers/layouts/Layout.container.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/entry/Root.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/entry/Routes.jsx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/store/root.store.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/utils/helper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/utils/history.helper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/develop/utils/isMobile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/test/setup.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/test/todos/actions.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/test/todos/reducers.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/webpack.config.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/.babelrc" afterPath="$PROJECT_DIR$/.babelrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/.eslintrc" afterPath="$PROJECT_DIR$/.eslintrc" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/.eslintrc.simple" afterPath="$PROJECT_DIR$/.eslintrc.simple" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/actions/api.actions.js" afterPath="$PROJECT_DIR$/app/actions/api.actions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/actions/common.actions.js" afterPath="$PROJECT_DIR$/app/actions/common.actions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/actions/modal.actions.js" afterPath="$PROJECT_DIR$/app/actions/modal.actions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/actions/pokeball.actions.js" afterPath="$PROJECT_DIR$/app/actions/pokeball.actions.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/actions/types/common.types.js" afterPath="$PROJECT_DIR$/app/actions/types/common.types.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/actions/types/modal.types.js" afterPath="$PROJECT_DIR$/app/actions/types/modal.types.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/api/ApiClient.js" afterPath="$PROJECT_DIR$/app/api/ApiClient.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/api/LocalStorage.js" afterPath="$PROJECT_DIR$/app/api/LocalStorage.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/api/index.js" afterPath="$PROJECT_DIR$/app/api/index.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/assets/svg/404.svg" afterPath="$PROJECT_DIR$/app/assets/svg/404.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/components/controls/button/StickButton.jsx" afterPath="$PROJECT_DIR$/app/components/controls/button/StickButton.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/components/pages/layouts/Layout.page.jsx" afterPath="$PROJECT_DIR$/app/components/pages/layouts/Layout.page.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/components/pages/notFound/NotFound.page.jsx" afterPath="$PROJECT_DIR$/app/components/pages/notFound/NotFound.page.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/components/pages/pokemons/Pokemon.page.jsx" afterPath="$PROJECT_DIR$/app/components/pages/pokemons/Pokemon.page.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/components/pages/pokemons/Pokemons.page.jsx" afterPath="$PROJECT_DIR$/app/components/pages/pokemons/Pokemons.page.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/components/pokemons/PokemonExt.jsx" afterPath="$PROJECT_DIR$/app/components/pokemons/PokemonExt.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/config/apiConfig.js" afterPath="$PROJECT_DIR$/app/config/apiConfig.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/config/appHistory.js" afterPath="$PROJECT_DIR$/app/config/appHistory.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/constants/urls.constant.js" afterPath="$PROJECT_DIR$/app/constants/urls.constant.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/containers/modal/Modal.container.jsx" afterPath="$PROJECT_DIR$/app/containers/modal/Modal.container.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/containers/pokemons/Pokemon.container.h.js" afterPath="$PROJECT_DIR$/app/containers/pokemons/Pokemon.container.h.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/containers/pokemons/Pokemon.container.jsx" afterPath="$PROJECT_DIR$/app/containers/pokemons/Pokemon.container.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/containers/pokemons/Pokemons.container.h.js" afterPath="$PROJECT_DIR$/app/containers/pokemons/Pokemons.container.h.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/containers/pokemons/Pokemons.container.jsx" afterPath="$PROJECT_DIR$/app/containers/pokemons/Pokemons.container.jsx" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/entry/app.js" afterPath="$PROJECT_DIR$/app/entry/app.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/models/base.model.js" afterPath="$PROJECT_DIR$/app/models/base.model.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/models/pokemon.model.js" afterPath="$PROJECT_DIR$/app/models/pokemon.model.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/models/pokemons.model.js" afterPath="$PROJECT_DIR$/app/models/pokemons.model.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/reducers/api.reducer.js" afterPath="$PROJECT_DIR$/app/reducers/api.reducer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/reducers/common.reducer.js" afterPath="$PROJECT_DIR$/app/reducers/common.reducer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/reducers/modal.reducer.js" afterPath="$PROJECT_DIR$/app/reducers/modal.reducer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/reducers/pokeball.reducer.js" afterPath="$PROJECT_DIR$/app/reducers/pokeball.reducer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/reducers/root.reducer.js" afterPath="$PROJECT_DIR$/app/reducers/root.reducer.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/develop/utils/valadation.helper.js" afterPath="$PROJECT_DIR$/app/utils/valadation.helper.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/webpack.config.base.babel.js" afterPath="$PROJECT_DIR$/webpack.config.base.babel.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/webpack.config.dev.babel.js" afterPath="$PROJECT_DIR$/webpack.config.dev.babel.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/webpack.config.prod.babel.js" afterPath="$PROJECT_DIR$/webpack.config.prod.babel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="react-redux-boilerplate.iws" />
@@ -109,105 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pokeball.actions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/actions/pokeball.actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/utils/helper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".eslintrc.simple" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.eslintrc.simple">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2376">
-              <caret line="132" column="10" selection-start-line="132" selection-start-column="5" selection-end-line="132" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".eslintrc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.eslintrc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modal.actions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/actions/modal.actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.actions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/actions/common.actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="api.actions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/actions/api.actions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modal.types.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/actions/types/modal.types.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.types.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/actions/types/common.types.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="126">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -248,6 +69,7 @@
         <option value="$PROJECT_DIR$/app/actions/types/common.types.js" />
         <option value="$PROJECT_DIR$/app/utils/helper.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -268,7 +90,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="webpack:dev:run" />
+          <id value="build" />
         </path>
       </selected-paths>
     </layout>
@@ -323,256 +145,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reducers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entry" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="containers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pokemons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="containers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="containers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="svg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="react-redux-boilerplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="types" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -591,7 +163,42 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -599,6 +206,19 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
       <method />
     </configuration>
   </component>
@@ -613,27 +233,27 @@
       <option name="presentableId" value="Default" />
       <updated>1474901171511</updated>
       <workItem from="1474901173267" duration="475000" />
-      <workItem from="1477426667695" duration="2148000" />
+      <workItem from="1477426667695" duration="3858000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2623000" />
+    <option name="totallyTimeSpent" value="4333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="24" width="1920" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17662753" sideWeight="0.49635038" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14781217" sideWeight="0.49635038" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SvgViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32777777" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5922836" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3895411" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2439394" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16061899" sideWeight="0.50364965" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937434" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -654,16 +274,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/reducers/root.reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/reducers/pokeball.reducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -997,7 +607,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1017,7 +627,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#55#0" expanded="true" />
+            <element signature="e#0#55#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1035,7 +645,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1074,7 +684,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="162">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
           <folding />
         </state>
@@ -1090,8 +700,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
