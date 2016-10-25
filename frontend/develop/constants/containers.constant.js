@@ -2,8 +2,8 @@
 import React from 'react';
 
 export default {
-	'AUTH': {
-		component: <div/>,
-		className: 'modal authorization'
-	}
+    'AUTH': {
+        component: <div/>,
+        className: 'modal authorization'
+    }
 };
