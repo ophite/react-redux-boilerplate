@@ -1,0 +1,9 @@
+frontend/node_modules/postcss-modules-local-by-default/.idea/
+node_modules/
+public/
+production/
+npm-debug.log
+.eslintcache
+
+.DS_Store
+npm-debug.log.*
