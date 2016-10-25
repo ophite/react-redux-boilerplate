@@ -1,43 +1,79 @@
-import model from './model';
+import model from './base.model';
+import { returnPromise } from '../utils/helper';
+import urls from '../constants/urls.constant';
 
 
 class pokemonModel extends model {
 
-	constructor(props) {
-		super(props);
-		this.types = [];
-	};
+    static MODEL_NAME = 'pokemonModel';
+    static TYPE_REQUEST = 'REQUEST_POKEMON';
+    static TYPE_FROM_SERVER = 'GET_POKEMON';
+    static TYPE_CLEAR = 'CLEAR_POKEMON';
 
-	static convertToModel = (res) => {
-		const item = {
-			id: res.pkdx_id,
-			name: res.name,
-			// avatar: `http://pokeapi.co/media/img/${res.pkdx_id}.png`,
-			avatar: `https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/sprites/pokemon/model/${res.pkdx_id}.png`,
-			attack: res.attack,
-			defense: res.defense,
-			hp: res.hp,
-			spAtk: res.sp_atk,
-			spDef: res.sp_def,
-			speed: res.speed,
-			weight: res.weight,
-			totalMoves: res.moves.length
-		};
+    constructor(props) {
+        super(props);
+    };
 
-		return item;
-	};
+    static create() {
+        return {
+            types: [],
+            item: {},
+            isLoading: false
+        };
+    };
 
-	static combineModel = (item) => {
-		return {
-			item
-		};
-	};
+    static apiGet(serverModel = {}) {
+        const { pokemonId } = serverModel;
+        const url = urls.pokeball.getPokemon(pokemonId);
+        return super
+            .apiClient()
+            .get(url);
+    };
 
-	static reduceModel = (state, payload) => {
-		const { item } = payload;
-		const newState = { ...item };
-		return model.reduceModel(newState);
-	};
+    static toClient(serverModel) {
+        if (!serverModel) {
+            return this.create();
+        }
+
+        const item = {
+            id: serverModel.pkdx_id,
+            name: serverModel.name,
+            // avatar: `http://pokeapi.co/media/img/${res.pkdx_id}.png`,
+            avatar: `https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/sprites/pokemon/model/${serverModel.pkdx_id}.png`,
+            attack: serverModel.attack,
+            defense: serverModel.defense,
+            hp: serverModel.hp,
+            spAtk: serverModel.sp_atk,
+            spDef: serverModel.sp_def,
+            speed: serverModel.speed,
+            weight: serverModel.weight,
+            totalMoves: serverModel.moves.length
+        };
+
+        return item;
+    };
+
+    static toServer(clientModel) {
+        if (super.isEmpty(clientModel)) {
+            return {};
+        }
+
+        return {
+            pokemonId: clientModel.pokemonId,
+        };
+    };
+
+    static reduceGet(stateModel, action) {
+        const { modelClient, model } = action.payload;
+        return {
+            [model.MODEL_NAME]: {
+                item: modelClient,
+                isLoading: false
+            }
+        };
+    };
 }
 
-export default pokemonModel;
+export {
+    pokemonModel,
+};

@@ -1,84 +1,91 @@
 import axios from 'axios';
 import queryString from 'query-string';
-import LocalStorage from '../api/LocalStorage';
 
 class ApiClient {
-    constructor({ baseURL }) {
-        this.baseURL = baseURL;
+
+    constructor({ prefix }) {
+        this.prefix = prefix;
+        // this.authToken = authMethod;
     }
 
-    get(requestUrl, payload = {}, params = {}) {
+    get(requestUrl, payload = {}, params = {}, auth = null) {
         return this.request({
             url: requestUrl,
             method: 'get',
             body: payload,
             params,
+            auth
         });
     }
 
-    put(requestUrl, payload = {}) {
+    put(requestUrl, payload = {}, auth = null) {
         return this.request({
             url: requestUrl,
             method: 'put',
             body: payload,
+            auth
         });
     }
 
-    post(requestUrl, payload = {}) {
+    post(requestUrl, payload = {}, auth = null) {
         return this.request({
             url: requestUrl,
             method: 'post',
             body: payload,
+            auth
         });
     }
 
-    delete(requestUrl) {
+    delete(requestUrl, auth = null) {
         return this.request({
             url: requestUrl,
             method: 'delete',
+            auth
         });
     }
 
-    request({ url, method, params = {}, body }) {
-        const config = {
-            method,
-            baseURL: this.baseURL,
-            url: params && Object.keys(params).length ? `${url}?${queryString.stringify(params)}` : `${url}`,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-
-        axios.interceptors.request.use((nextConfig) => {
-            const nextConfigShallow = { ...nextConfig };
-            const authToken = LocalStorage.get('auth_token');
-            // Append 'auth header' for restriction pages
-            if (authToken) {
-                // Custom security header
-                nextConfigShallow.headers['x-wsse'] = authToken;
+    request({ url, method, params = {}, body, auth = null }) {
+        const addAuthorization = (config, auth) => {
+            if (!auth) {
+                return;
             }
 
-            return nextConfigShallow;
-        });
+            const token = auth.email + ':' + auth.password;
+            config.headers.Authorization = 'Basic ' + btoa(token);
+        };
 
-        axios.interceptors.response.use((nextConfig) => {
-            const nextConfigShallow = { ...nextConfig };
+        const config = {
+            method,
+            baseURL: `${this.prefix}`,
+            // withCredentials: true,
+            // auth: {
+            //     username: username,
+            //     password: password
+            // },
+            url: params && Object.keys(params).length ? `${url}?${queryString.stringify(params)}` : `${url}`,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
 
-            // ...handle post apiCall data
+        addAuthorization(config, auth);
 
-            return nextConfigShallow;
-        });
-
-        const isPayloadMethod = !['get', 'head', 'delete'].includes(method);
+        const isPayloadMethod = !~['get', 'head', 'delete'].indexOf(method);
         // Append 'payload' for data methods
-        if (isPayloadMethod) { config.data = body; }
+        if (isPayloadMethod) {
+            delete body.authParams;
+            delete body.urlParams;
+            config.data = body;
+        }
 
-        return axios(config).then(
-            ({ data }) => Promise.resolve(data),
-            (error) => Promise.reject(error)
-        );
+        return axios(config)
+            .then(({ data }) => {
+                return Promise.resolve(data)
+            })
+            .catch((error) => {
+                return Promise.reject(error)
+            });
     }
 }
 
 export default ApiClient;
-

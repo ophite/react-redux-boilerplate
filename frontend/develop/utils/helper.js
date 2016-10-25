@@ -5,3 +5,13 @@ export const isEmpty = (val) => {
 
     return !Object.keys(val).length;
 };
+
+export const returnPromise = (data) => {
+    return Promise.resolve(data)
+        .then(results => {
+            return results
+        })
+        .catch(error => {
+            throw error;
+        });
+};

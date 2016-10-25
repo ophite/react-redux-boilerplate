@@ -4,18 +4,16 @@
   "description": "react-redux boilerplate",
   "main": "app.js",
   "scripts": {
-    "prod": "webpack -p",
-    "build": "webpack -d",
-    "devserver": "webpack-dev-server --history-api-fallback --debug --devtool eval-source-map --output-pathinfo --hot --inline --watch",
+    "build": "webpack -d --define process.env.NODE_ENV='\"production\"'",
+    "webpack:dev:run": "webpack-dev-server -d --config webpack.config.dev.babel.js --hot --display-error-details",
+    "webpack:dev:build": "webpack -d --config webpack.config.dev.babel.js --progress --color --display-error-details",
+    "webpack:prod:build": "NODE_ENV=production webpack -p --config webpack.config.prod.babel.js",
     "lint": "eslint develop test --fix --cache --ignore-pattern .gitignore",
     "lint:watch": "watch 'npm run lint' develop",
     "test": "mocha --compilers js:babel-core/register --recursive --require ./test/setup.js",
     "test:watch": "npm test -- --watch",
     "clear": "rm -rf public/ node_modules/",
-    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "build_dev": "webpack -d --config webpack.config.dev.babel.js --progress --color --display-error-details",
-    "run_dev": "webpack-dev-server -d --config webpack.config.dev.babel.js --color --display-error-details",
-    "build_production": "NODE_ENV=production webpack -p --config webpack.config.prod.babel.js"
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
   "pre-commit": [
     "precommit-msg",

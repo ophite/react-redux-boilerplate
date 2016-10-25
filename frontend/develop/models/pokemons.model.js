@@ -1,66 +1,114 @@
-import model from './model';
+import model from './base.model';
+import urls from '../constants/urls.constant';
+
 
 class pokemonsModel extends model {
 
-	constructor(props) {
-		super(props);
-		this.paginator = {};
-		this.hasMore = false;
-		this.items = [];
-	};
+    static MODEL_NAME = 'pokemonsModel';
+    static TYPE_REQUEST = 'REQUEST_POKEMONS';
+    static TYPE_FROM_SERVER = 'GET_POKEMONS';
+    static TYPE_CLEAR = 'CLEAR_POKEMONS';
 
-	static convertToModel = (res) => {
-		const items = res
-			.map((pokemon) => ({
-				id: pokemon.pkdx_id,
-				name: pokemon.name,
-				// avatar: `http://pokeapi.co/media/img/${pokemon.pkdx_id}.png`,
-				avatar: `https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/sprites/pokemon/model/${pokemon.pkdx_id}.png`,
-				types: pokemon.types
-			}));
+    constructor(props) {
+        super(props);
+    };
 
-		return items;
-	};
+    static apiGet(serverModel = {}) {
+        const { limit, offset } = serverModel;
+        const url = urls.pokeball.getPokemons();
+        const queryParams = (offset !== undefined)
+            ? { limit, offset: (offset + limit) }
+            : { limit };
 
-	static convertToModelPaginator = (res) => {
-		const paginator = {
-			limit: res.limit,
-			next: res.next,
-			offset: res.offset,
-			previous: res.previous,
-			total_count: res.total_count
-		};
+        return super
+            .apiClient()
+            .get(url, {}, queryParams);
+    };
 
-		return paginator;
-	};
+    static create() {
+        return {
+            items: [],
+            isFirstLoading: false,
+            paginator: {},
+            hasMore: false,
+            isLoading: false
+        };
+    };
 
-	static combineModel = (items, paginator) => {
-		return {
-			items, paginator
-		};
-	};
+    static toClient(serverModel) {
+        if (!serverModel) {
+            return this.create();
+        }
 
-	static reduceModel = (state, payload) => {
-		const { items, paginator } = payload;
-		const newState = {
-			paginator,
-			hasMore: paginator.offset < paginator.total_count,
-			items: [
-				...state.items,
-				...items
-			]
-		};
+        const { meta, objects } = serverModel;
+        const paginator = this.toClientPaginator(meta);
+        const items = objects
+            .map((pokemon) => ({
+                id: pokemon.pkdx_id,
+                name: pokemon.name,
+                // avatar: `http://pokeapi.co/media/img/${pokemon.pkdx_id}.png`,
+                avatar: `https://raw.githubusercontent.com/PokeAPI/pokeapi/master/data/v2/sprites/pokemon/model/${pokemon.pkdx_id}.png`,
+                types: pokemon.types
+            }));
 
-		return model.reduceModel(newState);
-	};
+        return {
+            items,
+            paginator
+        };
+    };
 
-	static reduceModelRequest = (state) => {
-		const newState = model.reduceModelRequest(state);
-		return {
-			...state,
-			isFirstLoading: newState.isLoading && (!newState.items || newState.items.length === 0)
-		};
-	};
+    static toClientPaginator(serverModel) {
+        const paginator = {
+            limit: serverModel.limit,
+            next: serverModel.next,
+            offset: serverModel.offset,
+            previous: serverModel.previous,
+            total_count: serverModel.total_count
+        };
+
+        return paginator;
+    };
+
+    static toServer(clientModel) {
+        if (super.isEmpty(clientModel)) {
+            return {};
+        }
+
+        return {
+            limit: clientModel.limit,
+            offset: clientModel.offset,
+        };
+    }
+
+    static reduceGet(stateModel, action) {
+        const { modelClient, model } = action.payload;
+        const {
+            items: _items,
+        } = stateModel;
+
+        const { items, paginator } = modelClient;
+
+        return {
+            [model.MODEL_NAME]: {
+                paginator,
+                hasMore: paginator.offset < paginator.total_count,
+                items: [..._items, ...items],
+            }
+        };
+    };
+
+    static reduceRequest(stateModel, action, state) {
+        const { model } = action.payload;
+        const newState = super.reduceRequest(stateModel, action, state)[model.MODEL_NAME];
+        return {
+            [model.MODEL_NAME]: {
+                ...stateModel,
+                isFirstLoading: newState.isLoading && (!newState.items || newState.items.length === 0)
+            }
+        };
+    };
 }
 
-export default pokemonsModel;
+export {
+    pokemonsModel,
+};

@@ -1,15 +1,11 @@
-import {baseUrl} from '../config/apiConfig';
-import ApiClient from './ApiClient';
-import {mandatory} from '../utils/valadation.helper';
+import config from '../config/apiConfig';
+import ApiClientWeb from '../api/ApiClient';
 
-import PokeballAPI from './PokeballAPI';
+const apiClient = () => {
+    let client = new ApiClientWeb({ prefix: config.baseUrl});
+    return client;
+};
 
-function apiFactory({ baseURL = mandatory('baseURL') } = {}) {
-	const api = new ApiClient({ baseURL });
-
-	return {
-		pokeball: new PokeballAPI({ apiClient: api })
-	};
-}
-
-export default apiFactory({ baseURL: baseUrl });
+export {
+    apiClient
+};
