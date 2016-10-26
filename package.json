@@ -4,7 +4,7 @@
   "description": "react-redux boilerplate",
   "main": "app.js",
   "scripts": {
-    "build": "webpack -d --define process.env.NODE_ENV='\"production\"'",
+    "build": "webpack -d --config webpack.config.base.babel.js --define process.env.NODE_ENV='\"production\"'",
     "webpack:dev:run": "webpack-dev-server -d --config webpack.config.dev.babel.js --hot --display-error-details",
     "webpack:dev:build": "webpack -d --config webpack.config.dev.babel.js --progress --color --display-error-details",
     "webpack:prod:build": "NODE_ENV=production webpack -p --config webpack.config.prod.babel.js",
