@@ -60,23 +60,6 @@ export const fail = (dispatch, callbackErrors = {}) => {
     };
 };
 
-export const request = (pendingType, requestParams) => {
-    return {
-        type: pendingType ? pendingType : typesCommon.COMMON_REQUEST,
-        payload: {
-            pendingType,
-            ...requestParams,
-        },
-    };
-};
-
-export const success = (type, data = null) => {
-    return {
-        type,
-        payload: data ? { ...data } : data,
-    };
-};
-
 export const openModal = (modalData) => {
     return {
         type: typesCommon.OPEN_MODAL,
@@ -117,12 +100,6 @@ export const changeWindowWidth = (windowWidth) => {
     };
 };
 
-
-export const clearModel = (model) => {
-    return {
-        type: model.TYPE_CLEAR,
-    };
-};
 
 export const failError = (dispatch, error) => {
     throw error;

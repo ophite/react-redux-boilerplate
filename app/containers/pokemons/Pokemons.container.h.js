@@ -13,6 +13,7 @@ PokemonsContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
+        // TODO Can use mode.MODEL_NAME property everywhere to avoid strings and dynamic names
         pokemons: state.pokeball.pokemonsModel,
     };
 };

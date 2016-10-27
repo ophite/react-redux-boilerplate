@@ -1,6 +1,7 @@
 import { pokemonModel } from '../models/pokemon.model';
 import { pokemonsModel } from '../models/pokemons.model';
-import { apiGet, clearModel } from './common.actions';
+import { apiGet } from './common.actions';
+import { apiClear } from './api.actions';
 
 
 export const actionGetPokemons = (params = {}) => {
@@ -17,5 +18,5 @@ export const actionGetPokemon = (params = {}) => {
 };
 
 export const actionClearPokemons = () => {
-    return clearModel(pokemonsModel);
+    return apiClear(pokemonsModel);
 };
