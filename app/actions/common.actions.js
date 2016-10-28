@@ -4,7 +4,29 @@ import routes from '../constants/routes.constant';
 import { apiGet as apiGetWrapper } from './api.actions';
 
 
-export const fail = (dispatch, callbackErrors = {}) => {
+export const failError = (dispatch, error) => {
+    throw error;
+};
+
+export const fail404 = (dispatch) => {
+    return appHistory.replace(routes.notFound());
+};
+
+export const failNonAuth = (dispatch) => {
+    return appHistory.push(routes.login());
+};
+
+export const getCallbackErrors = () => {
+    return {
+        [typesCommon.COMMON_CALLBACK_404]: fail404,
+        [typesCommon.COMMON_CALLBACK_ERROR]: failError,
+        [typesCommon.COMMON_CALLBACK_NON_AUTH]: failNonAuth,
+    };
+};
+
+export const fail = (dispatch) => {
+    const callbackErrors = getCallbackErrors();
+
     return (error) => {
         debugger;
         console.log('error response: ' + JSON.stringify(error));
@@ -101,28 +123,8 @@ export const changeWindowWidth = (windowWidth) => {
 };
 
 
-export const failError = (dispatch, error) => {
-    throw error;
-};
-
-export const fail404 = (dispatch) => {
-    return appHistory.replace(routes.notFound());
-};
-
-export const failNonAuth = (dispatch) => {
-    return appHistory.push(routes.login());
-};
-
-export const getCallbackErrors = () => {
-    return {
-        [typesCommon.COMMON_CALLBACK_404]: fail404,
-        [typesCommon.COMMON_CALLBACK_ERROR]: failError,
-        [typesCommon.COMMON_CALLBACK_NON_AUTH]: failNonAuth,
-    };
-};
-
 const isMobile = false;
-const apiGet = apiGetWrapper.bind(null, isMobile, getCallbackErrors());
+const apiGet = apiGetWrapper.bind(null, isMobile);
 export {
     apiGet,
 };

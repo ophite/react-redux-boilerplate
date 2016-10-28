@@ -5,4 +5,8 @@ export default {
         component: <div />,
         className: 'modal authorization',
     },
+    'ERROR': {
+        component: <div />,
+        className: 'error window',
+    },
 };

@@ -6,12 +6,10 @@ import commonTypes from '../actions/types/common.types';
 export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
 
-        case commonTypes.COMMON_ERROR:
-            return reduceError(state, action);
-        case commonTypes.COMMON_SUCCESS:
-            return reduceSuccess(state, action);
-        case commonTypes.COMMON_REQUEST:
-            return reduceRequest(state, action);
+        case commonTypes.COMMON_HANDLE_ERROR:
+            return reduceHandleError(state, action);
+        case commonTypes.COMMON_CLEAR_ERROR:
+            return reduceClearError(state, action);
 
         case commonTypes.OPEN_MODAL:
             return reduceOpenModal(state, action);
@@ -34,42 +32,19 @@ export default (state = DEFAULT_STATE, action) => {
     }
 };
 
-export const reduceRequest = (state, action) => {
-    const { key, pendingType, ...args } = action.payload;
-    return {
-        ...state,
-        pendingType,
-        pendingParams: {
-            key,
-            pendingType,
-            ...args,
-        },
-        isLoading: true,
-    };
-};
-
-const reduceSuccess = (state, action) => {
-    const { key, pendingType, ...args } = action.payload;
-    return {
-        ...state,
-        ...XHR_STATE,
-        pendingParams: {
-            key,
-            pendingType,
-            ...args,
-        },
-        isLoading: false,
-    };
-};
-
-const reduceError = (state, action) => {
+const reduceHandleError = (state, action) => {
     const { error } = action.payload;
-    const data = {
-        ...XHR_STATE,
-        error,
+    return {
+        ...state,
+        error
     };
+};
 
-    throw data;
+const reduceClearError = (state, action) => {
+    return {
+        ...state,
+        error: null
+    };
 };
 
 const reduceOpenModal = (state, action) => {
@@ -130,17 +105,11 @@ const reduceChangeWindowWidth = (state, action) => {
 };
 
 const DEFAULT_STATE = {
-    pendingType: 'default',
-    pendingParams: {},
     isModalOpen: false,
     modalData: {},
     isContainerModalOpen: false,
     containerModalData: {},
     isMenuBarVisible: false,
     windowWidth: window.innerWidth,
-};
-
-export const XHR_STATE = {
-    isLoading: false,
     error: null,
 };

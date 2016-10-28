@@ -1,7 +1,6 @@
 import * as commonAction from './common.actions';
 
 export const apiGet = (isMobile,
-                       callbackErrors,
                        model,
                        params = {},
                        success,
@@ -25,7 +24,7 @@ export const apiGet = (isMobile,
                     }
                 }
             })
-            .catch(commonAction.fail(dispatch, callbackErrors));
+            .catch(commonAction.fail(dispatch));
     };
 };
 
