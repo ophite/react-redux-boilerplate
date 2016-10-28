@@ -26,12 +26,13 @@ class pokemonsModel extends model {
     };
 
     static create() {
+        const props = super.create();
         return {
+            ...props,
             items: [],
             isFirstLoading: false,
             paginator: {},
-            hasMore: false,
-            isLoading: false
+            hasMore: false
         };
     };
 

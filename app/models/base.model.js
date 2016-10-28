@@ -10,6 +10,7 @@ class model {
 
     static create() {
         return {
+            model: {},
             isLoading: false
         };
     };
@@ -128,7 +129,7 @@ class model {
         const { model, modelClient } = action.payload;
         return {
             [model.MODEL_NAME]: {
-                ...modelClient,
+                model: modelClient,
                 isLoading: false
             }
         };

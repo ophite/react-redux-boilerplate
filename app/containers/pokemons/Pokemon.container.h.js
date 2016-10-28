@@ -13,7 +13,7 @@ PokemonContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        pokemon: state.pokeball.pokemonModel.item,
+        pokemon: state.pokeball.pokemonModel.model,
         isLoading: state.pokeball.pokemonModel.isLoading,
     };
 };

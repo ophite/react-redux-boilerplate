@@ -15,10 +15,10 @@ class pokemonModel extends model {
     };
 
     static create() {
+        const props = super.create();
         return {
-            types: [],
-            item: {},
-            isLoading: false
+            ...props,
+            types: []
         };
     };
 
@@ -60,16 +60,6 @@ class pokemonModel extends model {
 
         return {
             pokemonId: clientModel.pokemonId,
-        };
-    };
-
-    static reduceGet(stateModel, action) {
-        const { modelClient, model } = action.payload;
-        return {
-            [model.MODEL_NAME]: {
-                item: modelClient,
-                isLoading: false
-            }
         };
     };
 }
