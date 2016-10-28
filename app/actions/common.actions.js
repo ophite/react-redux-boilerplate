@@ -1,7 +1,6 @@
 import typesCommon from './types/common.types';
 import appHistory from '../config/appHistory';
 import routes from '../constants/routes.constant';
-import { apiGet as apiGetWrapper } from './api.actions';
 
 
 export const failError = (dispatch, error) => {
@@ -120,11 +119,4 @@ export const changeWindowWidth = (windowWidth) => {
         type: typesCommon.CHANGE_WINDOW_WIDTH,
         payload: { windowWidth },
     };
-};
-
-
-const isMobile = false;
-const apiGet = apiGetWrapper.bind(null, isMobile);
-export {
-    apiGet,
 };

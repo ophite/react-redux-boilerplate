@@ -1,7 +1,6 @@
 import * as commonAction from './common.actions';
 
-export const apiGet = (isMobile,
-                       model,
+export const apiGet = (model,
                        params = {},
                        success,
                        conditionalSuccess) => {
@@ -10,7 +9,7 @@ export const apiGet = (isMobile,
         dispatch(model.dispatchRequest({ model }));
 
         return model
-            .apiGet(modelServer, isMobile)
+            .apiGet(modelServer)
             .then((data) => {
 
                 if (conditionalSuccess) {
