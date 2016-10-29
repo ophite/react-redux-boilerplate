@@ -1,6 +1,7 @@
 import { isEmpty } from '../utils/helper';
 import { apiClient as ApiClientWrapper } from '../api/index';
 
+
 class model {
 
     //region init
@@ -37,29 +38,15 @@ class model {
 
     //region api
 
-    static handleServerRespons(dispatch,
-                               model,
-                               data,
-                               success,
-                               conditionalSuccess) {
-        if (conditionalSuccess) {
-            conditionalSuccess(dispatch, data);
-        } else {
-            const modelClient = model.toClient(data);
-            dispatch(model.dispatchModel({ modelClient, model }));
-
-            if (success) {
-                success(modelClient, dispatch);
-            }
-        }
+    static handleServerResponse(dispatch, params, model, serverResponse) {
+        const modelClient = model.toClient(serverResponse);
+        dispatch(model.dispatchModel({ modelClient, model }));
     }
 
     static apiCall(model,
                    params = {},
                    modelApiMethod,
-                   failAction,
-                   success,
-                   conditionalSuccess) {
+                   failAction) {
 
         return (dispatch) => {
             const fail = failAction ? failAction(dispatch) : ((error) => {
@@ -68,8 +55,8 @@ class model {
 
             dispatch(model.dispatchRequest({ model }));
             return modelApiMethod(params)
-                .then((data) => {
-                    model.handleServerRespons(dispatch, model, data, success, conditionalSuccess);
+                .then((serverResponse) => {
+                    model.handleServerResponse(dispatch, params, model, serverResponse);
                 })
                 .catch(fail);
         };
