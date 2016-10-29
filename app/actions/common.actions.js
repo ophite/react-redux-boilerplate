@@ -1,8 +1,9 @@
 import typesCommon from './types/common.types';
 import appHistory from '../config/appHistory';
 import routes from '../constants/routes.constant';
-import { apiClient } from '../api/';
 
+
+//region error
 
 export const failError = (dispatch, error) => {
     throw error;
@@ -84,11 +85,9 @@ export const fail = (dispatch) => {
     };
 };
 
-export const modelGet = (model) => {
-    const api = apiClient();
-    return model.actionGet(api.get.bind(api), model, fail);
-};
+//endregion
 
+//region modal
 
 export const openModal = (modalData) => {
     return {
@@ -115,6 +114,8 @@ export const closeContainerModal = (modalData) => {
         type: typesCommon.CLOSE_CONTAINER_MODAL,
     };
 };
+
+//endregion
 
 export const toggleMenuBar = (hide) => {
     return {

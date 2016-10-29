@@ -122,13 +122,25 @@ class model {
 
     static actionGet(requestMethod, model, failAction) {
         return (params = {}) => {
-            return this.apiCall(requestMethod, model, params, model.apiGet.bind(model), failAction);
+            return this.apiCall(
+                requestMethod,
+                model,
+                params,
+                model.apiGet.bind(model),
+                failAction
+            );
         }
     };
 
     static actionPost(requestMethod, model, failAction) {
         return (params = {}) => {
-            return this.apiCall(requestMethod, model, params, model.apiPost.bind(model), failAction);
+            return this.apiCall(
+                requestMethod,
+                model,
+                params,
+                model.apiPost.bind(model),
+                failAction
+            );
         }
     };
 

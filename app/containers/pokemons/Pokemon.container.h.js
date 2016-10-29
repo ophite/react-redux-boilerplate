@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import PokemonContainer from './Pokemon.container.jsx';
 import { pokemonModel } from '../../models/pokemon.model';
-import { modelGet } from '../../actions/common.actions';
+import { modelGet } from '../../actions/model.actions';
 
 
 PokemonContainer.propTypes = {
