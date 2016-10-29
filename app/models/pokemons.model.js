@@ -27,10 +27,12 @@ class pokemonsModel extends model {
         const props = super.create();
         return {
             ...props,
-            items: [],
-            isFirstLoading: false,
-            paginator: {},
-            hasMore: false
+            model: {
+                items: [],
+                isFirstLoading: false,
+                paginator: {},
+                hasMore: false
+            }
         };
     };
 
@@ -82,16 +84,21 @@ class pokemonsModel extends model {
     static reduceGet(stateModel, action) {
         const { modelClient, model } = action.payload;
         const {
-            items: _items,
+            model: {
+                items: _items,
+            }
         } = stateModel;
 
         const { items, paginator } = modelClient;
 
         return {
             [model.MODEL_NAME]: {
-                paginator,
-                hasMore: paginator.offset < paginator.total_count,
-                items: [..._items, ...items],
+                model: {
+                    paginator,
+                    hasMore: paginator.offset < paginator.total_count,
+                    items: [..._items, ...items],
+                },
+                isLoading: false
             }
         };
     };
