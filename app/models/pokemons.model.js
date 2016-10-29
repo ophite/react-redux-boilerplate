@@ -13,16 +13,14 @@ class pokemonsModel extends model {
         super(props);
     };
 
-    static apiGet(params = {}) {
+    static apiGet(requestMethod, params = {}) {
         const { limit, offset } = this.toServer(params);
         const url = urls.pokeball.getPokemons();
         const queryParams = (offset !== undefined)
             ? { limit, offset: (offset + limit) }
             : { limit };
 
-        return super
-            .apiClient()
-            .get(url, {}, queryParams);
+        return requestMethod(url, {}, queryParams);
     };
 
     static create() {

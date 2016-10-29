@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PokemonsContainer from './Pokemons.container.jsx';
 import { pokemonsModel } from '../../models/pokemons.model';
 import { fail } from '../../actions/common.actions';
+import { apiClient } from '../../api/';
 
 
 PokemonsContainer.propTypes = {
@@ -19,8 +20,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+    const api = apiClient();
     return {
-        handleActionGetPokemons: bindActionCreators(pokemonsModel.actionGet(pokemonsModel, fail), dispatch),
+        handleActionGetPokemons: bindActionCreators(pokemonsModel.actionGet(api.get.bind(api), pokemonsModel, fail), dispatch),
         handleActionClearPokemons: bindActionCreators(pokemonsModel.actionClear(pokemonsModel), dispatch),
     };
 };

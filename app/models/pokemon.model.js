@@ -22,12 +22,10 @@ class pokemonModel extends model {
         };
     };
 
-    static apiGet(params = {}) {
+    static apiGet(requestMethod, params = {}) {
         const { pokemonId } = this.toServer(params);
         const url = urls.pokeball.getPokemon(pokemonId);
-        return super
-            .apiClient()
-            .get(url);
+        return requestMethod(url);
     };
 
     static toClient(serverModel) {

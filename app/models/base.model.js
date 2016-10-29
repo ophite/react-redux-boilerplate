@@ -1,5 +1,4 @@
 import { isEmpty } from '../utils/helper';
-import { apiClient as ApiClientWrapper } from '../api/index';
 
 
 class model {
@@ -43,7 +42,8 @@ class model {
         dispatch(model.dispatchModel({ modelClient, model }));
     }
 
-    static apiCall(model,
+    static apiCall(requestMethod,
+                   model,
                    params = {},
                    modelApiMethod,
                    failAction) {
@@ -54,7 +54,7 @@ class model {
             });
 
             dispatch(model.dispatchRequest({ model }));
-            return modelApiMethod(params)
+            return modelApiMethod(requestMethod, params)
                 .then((serverResponse) => {
                     model.handleServerResponse(dispatch, params, model, serverResponse);
                 })
@@ -69,10 +69,6 @@ class model {
     static apiPost() {
         throw 'Not implemented method (apiPost)';
     };
-
-    static apiClient() {
-        return ApiClientWrapper();
-    }
 
     //endregion
 
@@ -124,15 +120,15 @@ class model {
 
     //region action
 
-    static actionGet(model, failAction) {
+    static actionGet(requestMethod, model, failAction) {
         return (params = {}) => {
-            return this.apiCall(model, params, model.apiGet.bind(model), failAction);
+            return this.apiCall(requestMethod, model, params, model.apiGet.bind(model), failAction);
         }
     };
 
-    static actionPost(model, failAction) {
+    static actionPost(requestMethod, model, failAction) {
         return (params = {}) => {
-            return this.apiCall(model, params, model.apiPost.bind(model), failAction);
+            return this.apiCall(requestMethod, model, params, model.apiPost.bind(model), failAction);
         }
     };
 
