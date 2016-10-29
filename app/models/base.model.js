@@ -1,6 +1,5 @@
 import { isEmpty } from '../utils/helper';
 import { apiClient as ApiClientWrapper } from '../api/index';
-import { apiGet, apiClear } from '../actions/api.actions';
 
 class model {
 
@@ -41,11 +40,15 @@ class model {
     static apiCall(model,
                    params = {},
                    modelApiMethod,
-                   errorsAction,
+                   failAction,
                    success,
                    conditionalSuccess) {
 
         return (dispatch) => {
+            const fail = failAction ? failAction(dispatch) : ((error) => {
+                throw error
+            });
+
             dispatch(model.dispatchRequest({ model }));
             return modelApiMethod(params)
                 .then((data) => {
@@ -62,7 +65,7 @@ class model {
                         }
                     }
                 })
-                .catch(errorsAction(dispatch));
+                .catch(fail);
         };
     }
 
@@ -128,21 +131,23 @@ class model {
 
     //region action
 
-    static actionGet(model, errorsAction) {
+    static actionGet(model, failAction) {
         return (params = {}) => {
-            return this.apiCall(model, params, model.apiGet.bind(model), errorsAction);
+            return this.apiCall(model, params, model.apiGet.bind(model), failAction);
         }
     };
 
-    static actionPost(model, errorsAction) {
+    static actionPost(model, failAction) {
         return (params = {}) => {
-            return this.apiCall(model, params, model.apiPost.bind(model), errorsAction);
+            return this.apiCall(model, params, model.apiPost.bind(model), failAction);
         }
     };
 
     static actionClear(model) {
         return () => {
-            return apiClear(model);
+            return (dispatch) => {
+                dispatch(model.dispatchClear({ model }));
+            }
         }
     };
 

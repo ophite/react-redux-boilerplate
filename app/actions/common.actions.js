@@ -36,42 +36,44 @@ export const fail = (dispatch) => {
             });
         }
 
+        console.log('error stack:' + error.stack);
+
         switch (error.status) {
             case 401:
-                {
-                    const callback = callbackErrors[typesCommon.COMMON_CALLBACK_NON_AUTH];
-                    if (callback) {
-                        return callback(dispatch, error);
-                    }
-                    return;
+            {
+                const callback = callbackErrors[typesCommon.COMMON_CALLBACK_NON_AUTH];
+                if (callback) {
+                    return callback(dispatch, error);
+                }
+                return;
                 // debugger
                 // appHistory.push(routes.login());
-                }
+            }
             case 404:
-                {
-                    const callback = callbackErrors[typesCommon.COMMON_CALLBACK_404];
-                    if (callback) {
-                        return callback(dispatch, error);
-                    }
-
-                    return;
-                // appHistory.replace(routes.notFound());
+            {
+                const callback = callbackErrors[typesCommon.COMMON_CALLBACK_404];
+                if (callback) {
+                    return callback(dispatch, error);
                 }
+
+                return;
+                // appHistory.replace(routes.notFound());
+            }
             case 500:
             case 400:
-                {
-                    dispatch({
-                        type: typesCommon.COMMON_HANDLE_ERROR,
-                        payload: { error },
-                    });
-                }
+            {
+                dispatch({
+                    type: typesCommon.COMMON_HANDLE_ERROR,
+                    payload: { error },
+                });
+            }
             default:
-                {
-                    dispatch({
-                        type: typesCommon.COMMON_HANDLE_ERROR,
-                        payload: { error },
-                    });
-                }
+            {
+                dispatch({
+                    type: typesCommon.COMMON_HANDLE_ERROR,
+                    payload: { error },
+                });
+            }
         }
 
         const callback = callbackErrors[typesCommon.COMMON_CALLBACK_ERROR];
