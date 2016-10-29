@@ -3,8 +3,8 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 import App from '../containers/layouts/App.jsx';
 import Layout from '../containers/layouts/Layout.container.h';
 import NotFoundPage from '../components/pages/notFound/NotFound.page.jsx'
-import Pokemon from '../containers/pokemons/Pokemon.container.h';
-import Pokemons from '../containers/pokemons/Pokemons.container.h';
+import Pokemon from '../containers/pokemons/Pokemon.container.jsx';
+import Pokemons from '../containers/pokemons/Pokemons.container.jsx';
 
 
 export default (

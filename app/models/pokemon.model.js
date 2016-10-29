@@ -1,6 +1,6 @@
 import model from './base.model';
-import { returnPromise } from '../utils/helper';
 import urls from '../constants/urls.constant';
+import { isEmpty } from '../utils/helper';
 
 
 class pokemonModel extends model {
@@ -14,14 +14,6 @@ class pokemonModel extends model {
         super(props);
     };
 
-    static create() {
-        const props = super.create();
-        return {
-            ...props,
-            types: []
-        };
-    };
-
     static apiGet(requestMethod, params = {}) {
         const { pokemonId } = this.toServer(params);
         const url = urls.pokeball.getPokemon(pokemonId);
@@ -33,7 +25,7 @@ class pokemonModel extends model {
             return this.create();
         }
 
-        const item = {
+        const data = {
             id: serverModel.pkdx_id,
             name: serverModel.name,
             // avatar: `http://pokeapi.co/media/img/${res.pkdx_id}.png`,
@@ -48,16 +40,18 @@ class pokemonModel extends model {
             totalMoves: serverModel.moves.length
         };
 
-        return item;
+        return {
+            data
+        };
     };
 
-    static toServer(clientModel) {
-        if (super.isEmpty(clientModel)) {
+    static toServer(params) {
+        if (isEmpty(params)) {
             return {};
         }
 
         return {
-            pokemonId: clientModel.pokemonId,
+            pokemonId: params.pokemonId,
         };
     };
 }

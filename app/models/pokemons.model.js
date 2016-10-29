@@ -1,5 +1,6 @@
 import model from './base.model';
 import urls from '../constants/urls.constant';
+import { isEmpty } from '../utils/helper';
 
 
 class pokemonsModel extends model {
@@ -26,9 +27,12 @@ class pokemonsModel extends model {
     static create() {
         const props = super.create();
         return {
-            ...props,
-            model: {
+            data: {
+                ...props.data,
                 items: [],
+            },
+            meta: {
+                ...props.meta,
                 isFirstLoading: false,
                 paginator: {},
                 hasMore: false
@@ -53,8 +57,12 @@ class pokemonsModel extends model {
             }));
 
         return {
-            items,
-            paginator
+            data: {
+                items,
+            },
+            meta: {
+                paginator
+            }
         };
     };
 
@@ -70,35 +78,43 @@ class pokemonsModel extends model {
         return paginator;
     };
 
-    static toServer(clientModel) {
-        if (super.isEmpty(clientModel)) {
+    static toServer(params) {
+        if (isEmpty(params)) {
             return {};
         }
 
         return {
-            limit: clientModel.limit,
-            offset: clientModel.offset,
+            limit: params.limit,
+            offset: params.offset,
         };
     }
 
     static reduceGet(stateModel, action) {
         const { modelClient, model } = action.payload;
         const {
-            model: {
+            data: {
                 items: _items,
-            }
+            },
+            meta: _meta
         } = stateModel;
 
-        const { items, paginator } = modelClient;
+        const {
+            data: { items },
+            meta
+        } = modelClient;
 
         return {
             [model.MODEL_NAME]: {
-                model: {
-                    paginator,
-                    hasMore: paginator.offset < paginator.total_count,
+                data: {
                     items: [..._items, ...items],
                 },
-                isLoading: false
+                meta: {
+                    ..._meta,
+                    ...meta,
+                    hasMore: meta.paginator.offset < meta.paginator.total_count,
+                    isLoading: false,
+                    isFirstLoading: false
+                }
             }
         };
     };
@@ -106,10 +122,18 @@ class pokemonsModel extends model {
     static reduceRequest(stateModel, action, state) {
         const { model } = action.payload;
         const newState = super.reduceRequest(stateModel, action, state)[model.MODEL_NAME];
+        const {
+            data : { items },
+            meta
+        } = newState;
+
         return {
             [model.MODEL_NAME]: {
                 ...stateModel,
-                isFirstLoading: newState.isLoading && (!newState.items || newState.items.length === 0)
+                meta: {
+                    ...stateModel.meta,
+                    isFirstLoading: meta.isLoading && (!items || !items.length)
+                }
             }
         };
     };

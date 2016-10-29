@@ -10,8 +10,10 @@ class model {
 
     static create() {
         return {
-            model: {},
-            isLoading: false
+            data: {},
+            meta: {
+                isLoading: false
+            }
         };
     };
 
@@ -24,9 +26,7 @@ class model {
             return true;
         }
 
-        const tmp = { ...model };
-        delete tmp.isLoading;
-        if (isEmpty(tmp)) {
+        if (isEmpty(model.data)) {
             return true;
         }
 
@@ -181,7 +181,10 @@ class model {
         return {
             [model.MODEL_NAME]: {
                 ...stateModel,
-                isLoading: true
+                meta: {
+                    ...stateModel.meta,
+                    isLoading: true
+                }
             }
         };
     };
@@ -190,8 +193,12 @@ class model {
         const { model, modelClient } = action.payload;
         return {
             [model.MODEL_NAME]: {
-                model: modelClient,
-                isLoading: false
+                data: modelClient.data,
+                meta: {
+                    ...stateModel.meta,
+                    ...modelClient.meta,
+                    isLoading: false
+                }
             }
         };
     };

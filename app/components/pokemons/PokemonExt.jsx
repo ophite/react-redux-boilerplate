@@ -3,12 +3,12 @@ import routes from '../../constants/routes.constant';
 
 
 class PokemonExt extends React.Component {
-    
+
     render() {
         const { pokemon } = this.props;
         const pokemonsRoute = routes.pokeball.getPokemons();
         const center = { textAlign: 'center' };
-        
+
         return (
             <div>
                 <div>

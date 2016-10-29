@@ -6,8 +6,8 @@ class PokemonsPage extends React.Component {
 
     renderPokemonsList() {
 
-        const { handleGetPokemons, pokemons } = this.props;
-        if (pokemons.isFirstLoading) {
+        const { handleGetPokemons, pokemons, meta } = this.props;
+        if (meta.isFirstLoading) {
             return (<div>Loading</div>)
         }
 
@@ -25,7 +25,7 @@ class PokemonsPage extends React.Component {
             <InfiniteScroll
                 loader={<div>Loading...</div>}
                 next={handleGetPokemons}
-                hasMoreNext={pokemons.hasMore}
+                hasMoreNext={meta.hasMore}
                 hasMorePrev={false}>
                 {pokemonsView}
             </InfiniteScroll>
@@ -33,7 +33,10 @@ class PokemonsPage extends React.Component {
     }
 
     render() {
-        const style = { /*height: 500, overflowY: 'auto',*/ position: 'relative', outline: '1px solid red' };
+        const style = {
+            position: 'relative',
+            outline: '1px solid red'
+        };
 
         return (
             <div style={style}>
@@ -44,6 +47,7 @@ class PokemonsPage extends React.Component {
 }
 
 PokemonsPage.propTypes = {
+    meta: React.PropTypes.object,
     pokemons: React.PropTypes.object,
     handleGetPokemons: React.PropTypes.func
 };
