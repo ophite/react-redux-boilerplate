@@ -1,6 +1,7 @@
 import typesCommon from './types/common.types';
 import appHistory from '../config/appHistory';
 import routes from '../constants/routes.constant';
+import { apiClient } from '../api/';
 
 
 export const failError = (dispatch, error) => {
@@ -82,6 +83,12 @@ export const fail = (dispatch) => {
         }
     };
 };
+
+export const modelGet = (model) => {
+    const api = apiClient();
+    return model.actionGet(api.get.bind(api), model, fail);
+};
+
 
 export const openModal = (modalData) => {
     return {
