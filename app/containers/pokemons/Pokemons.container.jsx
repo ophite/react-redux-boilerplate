@@ -19,6 +19,7 @@ class PokemonsContainer extends React.Component {
     };
 
     handleGetPokemonsNext() {
+        debugger
         const { handleActionGetPokemons } = this.props;
         handleActionGetPokemons({ ...paginator });
     }

@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import PokemonsContainer from './Pokemons.container.jsx';
-import { actionGetPokemons, actionClearPokemons } from '../../actions/pokeball.actions';
+import { pokemonsModel } from '../../models/pokemons.model';
+import { getCallbackErrors } from '../../actions/common.actions';
 
 
 PokemonsContainer.propTypes = {
@@ -13,15 +14,14 @@ PokemonsContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        // TODO Can use mode.MODEL_NAME property everywhere to avoid strings and dynamic names
-        pokemons: state.pokeball.pokemonsModel,
+        pokemons: state.pokeball[pokemonsModel.MODEL_NAME],
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleActionGetPokemons: bindActionCreators(actionGetPokemons, dispatch),
-        handleActionClearPokemons: bindActionCreators(actionClearPokemons, dispatch),
+        handleActionGetPokemons: bindActionCreators(pokemonsModel.actionGet(pokemonsModel, getCallbackErrors), dispatch),
+        handleActionClearPokemons: bindActionCreators(pokemonsModel.actionClear(pokemonsModel), dispatch),
     };
 };
 

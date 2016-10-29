@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import PokemonContainer from './Pokemon.container.jsx';
-import { actionGetPokemon } from '../../actions/pokeball.actions';
+import { pokemonModel } from '../../models/pokemon.model';
+import { getCallbackErrors } from '../../actions/common.actions';
 
 
 PokemonContainer.propTypes = {
@@ -13,13 +14,13 @@ PokemonContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        pokemon: state.pokeball.pokemonModel.model,
-        isLoading: state.pokeball.pokemonModel.isLoading,
+        pokemon: state.pokeball[pokemonModel.MODEL_NAME].model,
+        isLoading: state.pokeball[pokemonModel.MODEL_NAME].isLoading,
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    handleActionGetPokemon: bindActionCreators(actionGetPokemon, dispatch),
+    handleActionGetPokemon: bindActionCreators(pokemonModel.actionGet(pokemonModel, getCallbackErrors), dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonContainer);

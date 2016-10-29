@@ -1,5 +1,6 @@
 import { isEmpty } from '../utils/helper';
 import { apiClient as ApiClientWrapper } from '../api/index';
+import { apiGet, apiClear } from '../actions/api.actions';
 
 class model {
 
@@ -37,8 +38,40 @@ class model {
 
     //region api
 
+    static apiCall(model,
+                   params = {},
+                   modelApiMethod,
+                   errorsAction,
+                   success,
+                   conditionalSuccess) {
+
+        return (dispatch) => {
+            dispatch(model.dispatchRequest({ model }));
+            return modelApiMethod(params)
+                .then((data) => {
+
+                    // TODO in this place can be custom logic. Need to implement availability to customize this!
+                    if (conditionalSuccess) {
+                        conditionalSuccess(dispatch, data);
+                    } else {
+                        const modelClient = model.toClient(data);
+                        dispatch(model.dispatchModel({ modelClient, model }));
+
+                        if (success) {
+                            success(modelClient, dispatch);
+                        }
+                    }
+                })
+                .catch(errorsAction(dispatch));
+        };
+    }
+
     static apiGet() {
         throw 'Not implemented method (apiGet)';
+    };
+
+    static apiPost() {
+        throw 'Not implemented method (apiPost)';
     };
 
     static apiClient() {
@@ -65,7 +98,7 @@ class model {
 
     //endregion
 
-    //region action
+    //region dispatch
 
     static dispatchRequest(params = {}) {
         const { model } = params;
@@ -89,6 +122,28 @@ class model {
             type: model.TYPE_CLEAR,
             payload: model.combineModel(params)
         };
+    };
+
+    //endregion
+
+    //region action
+
+    static actionGet(model, errorsAction) {
+        return (params = {}) => {
+            return this.apiCall(model, params, model.apiGet.bind(model), errorsAction);
+        }
+    };
+
+    static actionPost(model, errorsAction) {
+        return (params = {}) => {
+            return this.apiCall(model, params, model.apiPost.bind(model), errorsAction);
+        }
+    };
+
+    static actionClear(model) {
+        return () => {
+            return apiClear(model);
+        }
     };
 
     //endregion

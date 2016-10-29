@@ -13,8 +13,8 @@ class pokemonsModel extends model {
         super(props);
     };
 
-    static apiGet(serverModel = {}) {
-        const { limit, offset } = serverModel;
+    static apiGet(params = {}) {
+        const { limit, offset } = this.toServer(params);
         const url = urls.pokeball.getPokemons();
         const queryParams = (offset !== undefined)
             ? { limit, offset: (offset + limit) }
