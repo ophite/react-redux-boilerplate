@@ -37,6 +37,23 @@ class model {
 
     //region api
 
+    static handleServerRespons(dispatch,
+                               model,
+                               data,
+                               success,
+                               conditionalSuccess) {
+        if (conditionalSuccess) {
+            conditionalSuccess(dispatch, data);
+        } else {
+            const modelClient = model.toClient(data);
+            dispatch(model.dispatchModel({ modelClient, model }));
+
+            if (success) {
+                success(modelClient, dispatch);
+            }
+        }
+    }
+
     static apiCall(model,
                    params = {},
                    modelApiMethod,
@@ -52,18 +69,7 @@ class model {
             dispatch(model.dispatchRequest({ model }));
             return modelApiMethod(params)
                 .then((data) => {
-
-                    // TODO in this place can be custom logic. Need to implement availability to customize this!
-                    if (conditionalSuccess) {
-                        conditionalSuccess(dispatch, data);
-                    } else {
-                        const modelClient = model.toClient(data);
-                        dispatch(model.dispatchModel({ modelClient, model }));
-
-                        if (success) {
-                            success(modelClient, dispatch);
-                        }
-                    }
+                    model.handleServerRespons(dispatch, model, data, success, conditionalSuccess);
                 })
                 .catch(fail);
         };

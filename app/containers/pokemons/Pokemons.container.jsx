@@ -18,12 +18,6 @@ class PokemonsContainer extends React.Component {
         handleActionGetPokemons({ limit: 12, offset });
     };
 
-    handleGetPokemonsNext() {
-        debugger
-        const { handleActionGetPokemons } = this.props;
-        handleActionGetPokemons({ ...paginator });
-    }
-
     render() {
         const { pokemons } = this.props;
 
