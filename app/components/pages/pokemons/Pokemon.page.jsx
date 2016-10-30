@@ -4,8 +4,7 @@ import PokemonExt from '../../pokemons/PokemonExt.jsx';
 class PokemonPage extends React.Component {
 
     renderPokemonCard(pokemon) {
-        const { isLoading } = this.props;
-        if (isLoading) {
+        if (pokemon.isLoading) {
             return (
                 <div>
                     <p>Loading...</p>
@@ -30,7 +29,6 @@ class PokemonPage extends React.Component {
 
 PokemonPage.propTypes = {
     pokemon: React.PropTypes.object,
-    isLoading: React.PropTypes.bool
 };
 
 export default PokemonPage;

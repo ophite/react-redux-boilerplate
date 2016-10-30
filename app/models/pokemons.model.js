@@ -27,16 +27,11 @@ class pokemonsModel extends model {
     static create() {
         const props = super.create();
         return {
-            data: {
-                ...props.data,
-                items: [],
-            },
-            meta: {
-                ...props.meta,
-                isFirstLoading: false,
-                paginator: {},
-                hasMore: false
-            }
+            ...props,
+            items: [],
+            isFirstLoading: false,
+            paginator: {},
+            hasMore: false
         };
     };
 
@@ -57,12 +52,8 @@ class pokemonsModel extends model {
             }));
 
         return {
-            data: {
-                items,
-            },
-            meta: {
-                paginator
-            }
+            items,
+            paginator
         };
     };
 
@@ -91,30 +82,16 @@ class pokemonsModel extends model {
 
     static reduceGet(stateModel, action) {
         const { modelClient, model } = action.payload;
-        const {
-            data: {
-                items: _items,
-            },
-            meta: _meta
-        } = stateModel;
-
-        const {
-            data: { items },
-            meta
-        } = modelClient;
+        const { items: _items } = stateModel;
+        const { items, paginator } = modelClient;
 
         return {
             [model.MODEL_NAME]: {
-                data: {
-                    items: [..._items, ...items],
-                },
-                meta: {
-                    ..._meta,
-                    ...meta,
-                    hasMore: meta.paginator.offset < meta.paginator.total_count,
-                    isLoading: false,
-                    isFirstLoading: false
-                }
+                items: [..._items, ...items],
+                paginator,
+                hasMore: paginator.offset < paginator.total_count,
+                isLoading: false,
+                isFirstLoading: false
             }
         };
     };
@@ -122,18 +99,12 @@ class pokemonsModel extends model {
     static reduceRequest(stateModel, action, state) {
         const { model } = action.payload;
         const newState = super.reduceRequest(stateModel, action, state)[model.MODEL_NAME];
-        const {
-            data : { items },
-            meta
-        } = newState;
+        const { items, isLoading } = newState;
 
         return {
             [model.MODEL_NAME]: {
                 ...stateModel,
-                meta: {
-                    ...stateModel.meta,
-                    isFirstLoading: meta.isLoading && (!items || !items.length)
-                }
+                isFirstLoading: isLoading && (!items || !items.length)
             }
         };
     };

@@ -40,9 +40,7 @@ class pokemonModel extends model {
             totalMoves: serverModel.moves.length
         };
 
-        return {
-            data
-        };
+        return data;
     };
 
     static toServer(params) {

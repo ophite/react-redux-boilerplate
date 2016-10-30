@@ -20,19 +20,18 @@ class PokemonsContainer extends React.Component {
     handleActionGetPokemons = () => {
         const {
             handleActionGetPokemons,
-            meta : { paginator }
+            pokemons
         } = this.props;
-        const offset = paginator.offset > 0 ? paginator.offset : 0;
+        const offset = pokemons.paginator.offset > 0 ? pokemons.paginator.offset : 0;
         handleActionGetPokemons({ limit: 12, offset });
     };
 
     render() {
-        const { pokemons, meta } = this.props;
+        const { pokemons } = this.props;
 
         return (
             <PokemonsPage
                 pokemons={pokemons}
-                meta={meta}
                 handleGetPokemons={this.handleActionGetPokemons.bind(this)}
             />
         );
@@ -47,8 +46,7 @@ PokemonsContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        pokemons: state.pokeball[pokemonsModel.MODEL_NAME].data,
-        meta: state.pokeball[pokemonsModel.MODEL_NAME].meta,
+        pokemons: state.pokeball[pokemonsModel.MODEL_NAME],
     };
 };
 

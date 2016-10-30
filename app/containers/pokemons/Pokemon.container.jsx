@@ -14,12 +14,11 @@ class PokemonContainer extends React.Component {
     }
 
     render() {
-        const { pokemon, isLoading } = this.props;
+        const { pokemon } = this.props;
 
         return (
             <PokemonPage
                 pokemon={pokemon}
-                isLoading={isLoading}
             />
         );
     }
@@ -33,8 +32,7 @@ PokemonContainer.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        pokemon: state.pokeball[pokemonModel.MODEL_NAME].data,
-        isLoading: state.pokeball[pokemonModel.MODEL_NAME].meta.isLoading,
+        pokemon: state.pokeball[pokemonModel.MODEL_NAME],
     };
 };
 
