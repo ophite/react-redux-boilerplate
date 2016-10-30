@@ -1,4 +1,4 @@
-import appHistory from '../config/appHistory';
+import { history } from '../entry/history';
 import { mandatory } from './valadation.helper';
 import { isEmpty } from './helper';
 
@@ -21,7 +21,7 @@ export const handlePush = ({ pathname, query, state }) => {
         mandatory('handlePush');
     }
 
-    appHistory.push(historyObject);
+    history.push(historyObject);
 };
 
 export const handleReplace = ({ pathname, query, state }) => {

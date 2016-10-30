@@ -5,11 +5,11 @@ import { Router } from 'react-router';
 
 import configureStore from '../store/root.store';
 import routes from './routes.jsx';
-import appHistory from '../config/appHistory'
+import { history } from './history'
 
 const initialState = {};
 const store = configureStore(initialState);
-const rrsHistory = syncHistoryWithStore(appHistory, store);
+const rrsHistory = syncHistoryWithStore(history, store);
 
 
 const Root = () => {

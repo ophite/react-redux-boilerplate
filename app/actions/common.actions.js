@@ -1,5 +1,5 @@
 import typesCommon from './types/common.types';
-import appHistory from '../config/appHistory';
+import { history } from '../entry/history';
 import routes from '../constants/routes.constant';
 
 
@@ -10,11 +10,11 @@ export const failError = (dispatch, error) => {
 };
 
 export const fail404 = (dispatch) => {
-    return appHistory.replace(routes.notFound());
+    return history.replace(routes.notFound());
 };
 
 export const failNonAuth = (dispatch) => {
-    return appHistory.push(routes.login());
+    return history.push(routes.login());
 };
 
 export const getCallbackErrors = () => {
@@ -49,7 +49,7 @@ export const fail = (dispatch) => {
                 }
                 return;
                 // debugger
-                // appHistory.push(routes.login());
+                // history.push(routes.login());
             }
             case 404:
             {
@@ -59,7 +59,7 @@ export const fail = (dispatch) => {
                 }
 
                 return;
-                // appHistory.replace(routes.notFound());
+                // history.replace(routes.notFound());
             }
             case 500:
             case 400:
