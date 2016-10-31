@@ -7,9 +7,9 @@ export const modelGet = (model) => {
     return model.actionGet(api.get.bind(api), model, fail);
 };
 
-export const modelPost = (model,) => {
+export const modelPost = (model) => {
     const api = apiClient();
-    return model.actionGet(api.post.bind(api), model, fail);
+    return model.actionPost(api.post.bind(api), model, fail);
 };
 
 export const modelCustomAction = (model, requestMethodName = 'GET', actionName) => {
