@@ -1,9 +1,11 @@
-import { isEmpty } from '../utils/helper';
-
-
 class model {
 
     //region init
+
+    static MODEL_NAME = '';
+    static TYPE_REQUEST = '';
+    static TYPE_FROM_SERVER = '';
+    static TYPE_CLEAR = '';
 
     constructor() {
     };
@@ -12,24 +14,6 @@ class model {
         return {
             isLoading: false
         };
-    };
-
-    //endregion
-
-    //region helper
-
-    static isEmpty(model) {
-        if (isEmpty(model)) {
-            return true;
-        }
-
-        const tmp = { ...model };
-        delete tmp.isLoading;
-        if (isEmpty(tmp)) {
-            return true;
-        }
-
-        return false;
     };
 
     //endregion
@@ -73,12 +57,6 @@ class model {
 
     //region convert
 
-    static combineModel(params) {
-        return {
-            ...params
-        };
-    };
-
     static toClient() {
         return {};
     }
@@ -95,7 +73,7 @@ class model {
         const { model } = params;
         return {
             type: model.TYPE_REQUEST,
-            payload: model.combineModel(params)
+            payload: params
         };
     };
 
@@ -103,7 +81,7 @@ class model {
         const { model } = params;
         return {
             type: model.TYPE_FROM_SERVER,
-            payload: model.combineModel(params)
+            payload: params
         };
     };
 
@@ -111,7 +89,7 @@ class model {
         const { model } = params;
         return {
             type: model.TYPE_CLEAR,
-            payload: model.combineModel(params)
+            payload: params
         };
     };
 
@@ -208,3 +186,4 @@ class model {
 }
 
 export default model;
+
