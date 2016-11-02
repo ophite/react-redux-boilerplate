@@ -99,7 +99,7 @@ class model {
 
     static actionGet(requestMethod, model, failAction) {
         return (params = {}) => {
-            return this.apiCall(
+            return model.apiCall(
                 requestMethod,
                 model,
                 params,
@@ -111,7 +111,7 @@ class model {
 
     static actionPost(requestMethod, model, failAction) {
         return (params = {}) => {
-            return this.apiCall(
+            return model.apiCall(
                 requestMethod,
                 model,
                 params,
