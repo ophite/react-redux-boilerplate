@@ -15,12 +15,12 @@ class pokemonModel extends model {
     };
 
     static apiGet(requestMethod, params = {}) {
-        const { pokemonId } = this.toServer(params);
+        const { pokemonId } = this.mapToServer(params);
         const url = urls.pokeball.getPokemon(pokemonId);
         return requestMethod(url);
     };
 
-    static toClient(serverModel) {
+    static mapToClient(serverModel) {
         if (!serverModel) {
             return this.create();
         }
@@ -43,7 +43,7 @@ class pokemonModel extends model {
         return data;
     };
 
-    static toServer(params) {
+    static mapToServer(params) {
         if (isEmpty(params)) {
             return {};
         }

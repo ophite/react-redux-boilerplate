@@ -18,56 +18,60 @@ class model {
 
     //endregion
 
-    //region api
+    //region mapper
 
-    static handleServerResponse(dispatch, params, model, serverResponse) {
-        const modelClient = model.toClient(serverResponse);
-        dispatch(model.dispatchModel({ modelClient, model }));
+    static mapToClient() {
+        return {};
     }
 
-    static apiCall(requestMethod,
-                   model,
-                   params = {},
-                   modelApiMethod,
-                   failAction) {
+    static mapToServer() {
+        return {};
+    }
 
-        return (dispatch) => {
-            const fail = failAction ? failAction(dispatch) : ((error) => {
-                throw error
-            });
+    //endregion
 
-            dispatch(model.dispatchRequest({ model }));
-            return modelApiMethod(requestMethod, params)
-                .then((serverResponse) => {
-                    model.handleServerResponse(dispatch, params, model, serverResponse);
-                })
-                .catch(fail);
+    //region action api
+
+    /*
+     * params: passed from component for url
+     * clientApiMethod: GET, POST, PUT, DELETE
+     * modelApiMethod: API method in model (GET, POST, PUT, DELETE)
+     * model: one of models in redux-models
+     * history: API for history
+     * failAction: error handling actions (404, 500, 401, etc ...)
+     * */
+    static actionApiCall(clientApiMethod, modelApiMethod, model, failAction) {
+        return (params = {}) => {
+            return (dispatch) => {
+
+                const fail = failAction ?
+                    failAction(dispatch) :
+                    ((error) => {
+                        throw error
+                    });
+
+                /* 1 request */
+                dispatch(model.dispatchRequest({ model }));
+                return modelApiMethod(clientApiMethod, params)
+                    .then((serverResponse) => {
+                        /* 2 response*/
+                        model.processServerResponse(
+                            dispatch,
+                            params,
+                            model,
+                            serverResponse
+                        );
+                    })
+                    /* 3 error */
+                    .catch(fail);
+            };
         };
     }
 
-    static apiGet() {
-        throw 'Not implemented method (apiGet)';
-    };
-
-    static apiPost() {
-        throw 'Not implemented method (apiPost)';
-    };
-
-    //endregion
-
-    //region convert
-
-    static toClient() {
-        return {};
+    static processServerResponse(dispatch, params, model, serverResponse, history) {
+        const modelClient = model.mapToClient(serverResponse);
+        dispatch(model.dispatchModel({ modelClient, model }));
     }
-
-    static toServer() {
-        return {};
-    }
-
-    //endregion
-
-    //region dispatch
 
     static dispatchRequest(params = {}) {
         const { model } = params;
@@ -85,41 +89,17 @@ class model {
         };
     };
 
-    static dispatchClear(params = {}) {
-        const { model } = params;
-        return {
-            type: model.TYPE_CLEAR,
-            payload: params
-        };
+    static apiGet() {
+        throw 'Not implemented method (apiGet)';
+    };
+
+    static apiPost() {
+        throw 'Not implemented method (apiPost)';
     };
 
     //endregion
 
-    //region action
-
-    static actionGet(requestMethod, model, failAction) {
-        return (params = {}) => {
-            return model.apiCall(
-                requestMethod,
-                model,
-                params,
-                model.apiGet.bind(model),
-                failAction
-            );
-        }
-    };
-
-    static actionPost(requestMethod, model, failAction) {
-        return (params = {}) => {
-            return model.apiCall(
-                requestMethod,
-                model,
-                params,
-                model.apiPost.bind(model),
-                failAction
-            );
-        }
-    };
+    //region actions
 
     static actionClear(model) {
         return () => {
@@ -127,6 +107,14 @@ class model {
                 dispatch(model.dispatchClear({ model }));
             }
         }
+    };
+
+    static dispatchClear(params = {}) {
+        const { model } = params;
+        return {
+            type: model.TYPE_CLEAR,
+            payload: params
+        };
     };
 
     //endregion
